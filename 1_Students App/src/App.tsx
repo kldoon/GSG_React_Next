@@ -42,20 +42,27 @@ const INITIAL_LIST: Array<IStudent> = [
   },
 ];
 
-const x = 10;
 function App() {
   const [studentsList, setStudentsList] = useState<IStudent[]>(INITIAL_LIST);
+  const [totalAbsents, setTotalAbsents] = useState(0);
 
-  const removeLast = () => {
+  const removeFirst = () => {
     const newList = [...studentsList];
     newList.shift();  // removes the first item
     setStudentsList(newList);
   }
 
+  const handleAbsentChange = (name: string, change: number) => {
+    console.log("[App.tsx] Absent changed");
+    console.log(`${name}: ${change}`);
+    setTotalAbsents(totalAbsents + change);
+  }
+
   return (
     <div>
       <h1 style={{ color: '#a3ff55' }}>Welcome to GSG React/Next Course</h1>
-      <button onClick={removeLast}>Remove First Student</button>
+      <button onClick={removeFirst}>Remove First Student</button>
+      <b>Total Absents {totalAbsents}</b>
       {
         studentsList.map(student => (
           <Student
@@ -65,6 +72,7 @@ function App() {
             age={student.age}
             isGraduated={student.isGraduated}
             coursesList={student.coursesList}
+            onAbsentChange={handleAbsentChange}
           />
         )
         )
