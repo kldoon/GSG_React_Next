@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import './add-form.css';
+import { IStudent } from '../../types';
 
 const AddForm = () => {
-  const [name, setName] = useState<string>("");
-  const [age, setAge] = useState<number>(0);
-  const [isGraduated, setIsGraduated] = useState<boolean>(false);
+  const [student, setStudent] = useState<IStudent>({ age: 0, coursesList: [], id: '', isGraduated: false, name: '' });
+  const handleChange = (field: string, value: any) => {
+    setStudent({ ...student, [field]: value });
 
-  // const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setName(e.target.value)
-  // }
+    // if (field === 'name') {
+    //   setStudent({ ...student, name: value });
+    // } else if (field === 'age') {
+    //   setStudent({ ...student, age: value });
+    // } else if (field === 'isGraduated') {
+    //   setStudent({ ...student, isGraduated: value });
+    // }
+  }
 
   return (
     <div>
-      <h3>{name}</h3>
-      <h3>{age}</h3>
-      <h3>{isGraduated.toString()}</h3>
+      <h3>{student.name}</h3>
+      <h3>{student.age}</h3>
+      <h3>{student.isGraduated.toString()}</h3>
       <div>
         <label htmlFor="name">Student Name: </label>
         <input
           id="name"
           type="text"
-          onChange={e => setName(e.target.value)}
+          value={student.name}
+          onChange={e => handleChange('name', e.target.value)}
         />
       </div>
       <div>
@@ -30,7 +37,7 @@ const AddForm = () => {
           type="number"
           min={17}
           max={40}
-          onChange={e => setAge(Number(e.target.value))}
+          onChange={e => handleChange('age', e.target.value)}
         />
       </div>
       <div>
@@ -38,7 +45,7 @@ const AddForm = () => {
         <input
           id="isGraduated"
           type="checkbox"
-          onChange={e => setIsGraduated(e.target.checked)}
+          onChange={e => handleChange('isGraduated', e.target.checked)}
         />
       </div>
     </div>
