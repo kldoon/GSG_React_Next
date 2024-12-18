@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './App.css'
-import Student from './components/student/student.component';
 import { IStudent } from './types';
+
+import Student from './components/student/student.component';
+import AddForm from './components/add-form/add-form.component';
 
 const COURSES_LIST: string[] = ['React', 'HTML', 'CSS'];
 const INITIAL_LIST: Array<IStudent> = [
@@ -61,6 +63,7 @@ function App() {
   return (
     <div>
       <h1 style={{ color: '#a3ff55' }}>Welcome to GSG React/Next Course</h1>
+      <AddForm />
       <button onClick={removeFirst}>Remove First Student</button>
       <b>Total Absents {totalAbsents}</b>
       {
