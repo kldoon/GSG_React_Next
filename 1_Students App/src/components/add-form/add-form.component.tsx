@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './add-form.css';
 import { IStudent } from '../../types';
+import CoursesListForm from '../courses-list-form/courses-list-form.component';
 
 const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '' };
 
@@ -23,6 +24,10 @@ const AddForm = (props: IProps) => {
 
   const handleClear = () => {
     setStudent(INITIAL_STUDENT);
+  }
+
+  const handleCoursesChange = (list: string[]) => {
+    setStudent({ ...student, coursesList: list });
   }
 
   return (
@@ -55,6 +60,9 @@ const AddForm = (props: IProps) => {
           checked={student.isGraduated}
           onChange={e => handleChange('isGraduated', e.target.checked)}
         />
+      </div>
+      <div>
+        <CoursesListForm value={student.coursesList} onSubmit={handleCoursesChange} />
       </div>
       <div className="Actions">
         <button onClick={handleSubmit}>Submit</button>
