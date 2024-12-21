@@ -2,25 +2,31 @@ import { useState } from 'react';
 import './add-form.css';
 import { IStudent } from '../../types';
 
-const AddForm = () => {
-  const [student, setStudent] = useState<IStudent>({ age: 0, coursesList: [], id: '', isGraduated: false, name: '' });
+const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '' };
+
+interface IProps {
+  onSubmit: (std: IStudent) => void;
+}
+
+const AddForm = (props: IProps) => {
+  const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
+
   const handleChange = (field: string, value: any) => {
     setStudent({ ...student, [field]: value });
+  }
 
-    // if (field === 'name') {
-    //   setStudent({ ...student, name: value });
-    // } else if (field === 'age') {
-    //   setStudent({ ...student, age: value });
-    // } else if (field === 'isGraduated') {
-    //   setStudent({ ...student, isGraduated: value });
-    // }
+  const handleSubmit = () => {
+    const newStudent: IStudent = { ...student, id: Date.now().toString() };
+    props.onSubmit(newStudent);
+    handleClear();
+  }
+
+  const handleClear = () => {
+    setStudent(INITIAL_STUDENT);
   }
 
   return (
     <div>
-      <h3>{student.name}</h3>
-      <h3>{student.age}</h3>
-      <h3>{student.isGraduated.toString()}</h3>
       <div>
         <label htmlFor="name">Student Name: </label>
         <input
@@ -37,6 +43,7 @@ const AddForm = () => {
           type="number"
           min={17}
           max={40}
+          value={student.age}
           onChange={e => handleChange('age', e.target.value)}
         />
       </div>
@@ -45,9 +52,15 @@ const AddForm = () => {
         <input
           id="isGraduated"
           type="checkbox"
+          checked={student.isGraduated}
           onChange={e => handleChange('isGraduated', e.target.checked)}
         />
       </div>
+      <div className="Actions">
+        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleClear}>Clear</button>
+      </div>
+      <br /><br />
     </div>
   )
 };

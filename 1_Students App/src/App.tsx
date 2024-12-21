@@ -55,15 +55,17 @@ function App() {
   }
 
   const handleAbsentChange = (name: string, change: number) => {
-    console.log("[App.tsx] Absent changed");
-    console.log(`${name}: ${change}`);
     setTotalAbsents(totalAbsents + change);
+  }
+
+  const handleAddStudent = (newStudent: IStudent) => {
+    setStudentsList([newStudent, ...studentsList]);
   }
 
   return (
     <div>
       <h1 style={{ color: '#a3ff55' }}>Welcome to GSG React/Next Course</h1>
-      <AddForm />
+      <AddForm onSubmit={handleAddStudent} />
       <button onClick={removeFirst}>Remove First Student</button>
       <b>Total Absents {totalAbsents}</b>
       {
