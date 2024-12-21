@@ -40,18 +40,18 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.2em .6em;
-  font-size: 1em;
+  font-size: 14px;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
   cursor: pointer;
   transition: border-color 0.25s;
-  margin: 0 10px;
-  border-color: #646cff;
+  border-color: #FAC67A;
 }
 
 button:hover {
-  border-color: #2a2d69;
+  border-color: #866634;
+  background-color: #dc9fbc;
 }
 
 button:focus,

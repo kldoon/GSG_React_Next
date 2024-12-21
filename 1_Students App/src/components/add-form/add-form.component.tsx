@@ -6,6 +6,7 @@ import CoursesListForm from '../courses-list-form/courses-list-form.component';
 const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '' };
 
 interface IProps {
+  className?: string;
   onSubmit: (std: IStudent) => void;
 }
 
@@ -31,8 +32,8 @@ const AddForm = (props: IProps) => {
   }
 
   return (
-    <div>
-      <div>
+    <div className={`wrapper ${props.className}`}>
+      <div className="input">
         <label htmlFor="name">Student Name: </label>
         <input
           id="name"
@@ -41,7 +42,7 @@ const AddForm = (props: IProps) => {
           onChange={e => handleChange('name', e.target.value)}
         />
       </div>
-      <div>
+      <div className="input">
         <label htmlFor="age">Student Age: </label>
         <input
           id="age"
@@ -52,7 +53,7 @@ const AddForm = (props: IProps) => {
           onChange={e => handleChange('age', e.target.value)}
         />
       </div>
-      <div>
+      <div className="input">
         <label htmlFor="isGraduated">Is Student Graduated: </label>
         <input
           id="isGraduated"
@@ -68,7 +69,6 @@ const AddForm = (props: IProps) => {
         <button onClick={handleSubmit}>Submit</button>
         <button onClick={handleClear}>Clear</button>
       </div>
-      <br /><br />
     </div>
   )
 };

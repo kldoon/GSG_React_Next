@@ -1,0 +1,45 @@
+.wrapper.addForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 30px;
+  border-right: 3px solid gray;
+  padding-right: 5px;
+}
+
+.wrapper.addForm .input {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.wrapper.addForm input {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #FAC67A;
+  outline: 0;
+}
+
+.wrapper.addForm .Actions {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 10px;
+  
+}
+
+.wrapper.addForm .addCourseForm form {
+  display: flex;
+  justify-content: space-between;
+  
+  column-gap: 20px;
+}
+
+.wrapper.addForm .addCourseForm ul {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  gap: 10px;
+  
+  padding: 0;
+}

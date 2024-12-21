@@ -17,13 +17,15 @@ const CoursesListForm = (props: IProps) => {
   }
 
   return (
-    <div>
+    <div className="addCourseForm">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="cName">Enter Course: </label>
-        <input id="cName" type="text" name="courseName" />
-        <input type="submit" value="Add Course" />
+        <div>
+          <label htmlFor="cName">Enter Course: </label>
+          <input id="cName" type="text" name="courseName" />
+        </div>
+        <button type="submit">Add Course</button>
       </form>
-      <ul>
+      <ul >
         {courseList.map((course, index) => <li key={course + index}>{course}</li>)}
       </ul>
     </div>

@@ -12,7 +12,7 @@ const Student = (props: IProps) => {
 
   const addAbsent = () => {
     setAbsents(absents + 1);
-    props.onAbsentChange(props.name,  +1);
+    props.onAbsentChange(props.name, +1);
   }
 
   const removeAbsent = () => {
@@ -28,24 +28,26 @@ const Student = (props: IProps) => {
   }
 
   return (
-    <div className='std-wrapper'>
-      <div>
+    <div className="std-wrapper">
+      <div className="data-field">
         <b>Student:</b> {props.name.toUpperCase() + '!'}
       </div>
-      <div>
+      <div className="data-field">
         <b>Age:</b> {props.age}
       </div>
-      <div>
+      <div className="data-field">
         <b>Is Graduated:</b> {props.isGraduated ? 'Yes' : 'No'}
       </div>
-      <div>
+      <div className="data-field">
+        <b>Courses List:</b>
+        <CoursesList list={props.coursesList} />
+      </div>
+      <div className="absents">
         <b>Absents:</b> {absents}
         <button onClick={addAbsent}>+</button>
         <button onClick={removeAbsent}>-</button>
         <button onClick={resetAbsent}>Reset</button>
       </div>
-      <CoursesList list={props.coursesList} />
-      <hr />
     </div>
   )
 }

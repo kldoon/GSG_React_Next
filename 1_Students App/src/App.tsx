@@ -62,12 +62,16 @@ function App() {
     setStudentsList([newStudent, ...studentsList]);
   }
 
+  const h1Style = { color: '#69247C', fontSize: '24px' };
+
   return (
-    <div>
-      <h1 style={{ color: '#a3ff55' }}>Welcome to GSG React/Next Course</h1>
-      <AddForm onSubmit={handleAddStudent} />
-      <button onClick={removeFirst}>Remove First Student</button>
-      <b>Total Absents {totalAbsents}</b>
+    <div className="main wrapper">
+      <h1 style={h1Style}>Welcome to GSG React/Next Course</h1>
+      <AddForm className="addForm" onSubmit={handleAddStudent} />
+      <div className='stats'>
+        <button onClick={removeFirst}>POP Student</button>
+        <b style={{ fontSize: '12px', fontWeight: 100, color: 'gray' }}>Total Absents {totalAbsents}</b>
+      </div>
       {
         studentsList.map(student => (
           <Student

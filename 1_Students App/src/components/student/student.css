@@ -1,3 +1,34 @@
 .std-wrapper {
-  background-color: #c1c1c1;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 4px 4px 9px -7px #b4b4b4;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.std-wrapper ul.courses-list {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.std-wrapper .data-field {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.std-wrapper .data-field b {
+  color: #5b5b5b;
+}
+
+.std-wrapper .absents {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 10px;
+  margin-top: 20px;
 }
