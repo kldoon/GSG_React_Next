@@ -1,16 +1,31 @@
+.wrapper.addForm.closed {
+  max-height: 28px;
+  overflow: hidden;
+}
+
+.wrapper.addForm.open {
+  overflow: hidden;
+  max-height: 500px;
+  z-index: 3;
+}
+
 .wrapper.addForm {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   margin-bottom: 30px;
   border-right: 3px solid gray;
+  border-radius: 4px;
   padding-right: 5px;
+  background-color: #F9E6CF;
+  z-index: 2;
+  transition: 200ms max-height ease-in;
 }
 
 .wrapper.addForm .input {
   display: flex;
   justify-content: space-between;
-  
+
 }
 
 .wrapper.addForm input {
@@ -25,13 +40,13 @@
   display: flex;
   justify-content: flex-end;
   column-gap: 10px;
-  
+
 }
 
 .wrapper.addForm .addCourseForm form {
   display: flex;
   justify-content: space-between;
-  
+
   column-gap: 20px;
 }
 
@@ -40,6 +55,6 @@
   list-style-type: none;
   flex-wrap: wrap;
   gap: 10px;
-  
+
   padding: 0;
 }

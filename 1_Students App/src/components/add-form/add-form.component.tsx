@@ -12,6 +12,7 @@ interface IProps {
 
 const AddForm = (props: IProps) => {
   const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (field: string, value: any) => {
     setStudent({ ...student, [field]: value });
@@ -32,7 +33,8 @@ const AddForm = (props: IProps) => {
   }
 
   return (
-    <div className={`wrapper ${props.className}`}>
+    <div className={`wrapper ${props.className} ${isOpen ? 'open' : 'closed'}`}>
+      <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <span>&and;</span> : <span>&or;</span>} {isOpen ? 'Hide' : 'Show'} Add Form</button>
       <div className="input">
         <label htmlFor="name">Student Name: </label>
         <input
