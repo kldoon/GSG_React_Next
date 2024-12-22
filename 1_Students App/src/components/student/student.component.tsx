@@ -38,15 +38,19 @@ const Student = (props: IProps) => {
       <div className="data-field">
         <b>Is Graduated:</b> {props.isGraduated ? 'Yes' : 'No'}
       </div>
-      <div className="data-field">
+      <div className="data-field data-field-list">
         <b>Courses List:</b>
         <CoursesList list={props.coursesList} />
       </div>
       <div className="absents">
-        <b>Absents:</b> {absents}
-        <button onClick={addAbsent}>+</button>
-        <button onClick={removeAbsent}>-</button>
-        <button onClick={resetAbsent}>Reset</button>
+        <div className="data-field">
+          <b>Absents:</b> {absents}
+        </div>
+        <div className="absents-btns">
+          <button onClick={addAbsent}>+</button>
+          <button onClick={removeAbsent}>-</button>
+          <button onClick={resetAbsent}>Reset</button>
+        </div>
       </div>
     </div>
   )

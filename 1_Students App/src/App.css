@@ -1,32 +1,28 @@
-body {
-  display: flex;
-  justify-content: center;
-}
-
-#root {
-  max-width: 100%;
-  margin: 0;
-  padding: 0 2rem;
-  text-align: center;
-}
-
-.main {
-  max-width: 600px;
-  background-color: #F9E6CF;
-  margin: 0 auto;
-  padding: 30px 20px;
-}
-
 .main h1 {
-  margin-top: 0;
+  color: white;
+  text-align: center;
+  
 }
 
-.main>.stats {
+.main .stats {
+  background-color: white;
+  padding: 5px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.main-form {
+  max-width: 600px;
+  margin: auto;
   margin-bottom: 20px;
 }
 
-.main.wrapper {
-  border-left: 8px solid #DA498D;
+
+.student-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
 }
