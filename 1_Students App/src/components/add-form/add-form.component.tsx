@@ -34,7 +34,7 @@ const AddForm = (props: IProps) => {
 
   return (
     <div className={`wrapper ${props.className} ${isOpen ? 'open' : 'closed'}`}>
-      <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <span>&and;</span> : <span>&or;</span>} {isOpen ? 'Hide' : 'Show'} Add Form</button>
+      <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <span>⬆️</span> : <span>⬇️</span>} {isOpen ? 'Hide' : 'Show'} Add Form</button>
       <div className="input">
         <label htmlFor="name">Student Name: </label>
         <input
@@ -55,14 +55,14 @@ const AddForm = (props: IProps) => {
           onChange={e => handleChange('age', e.target.value)}
         />
       </div>
-      <div className="input">
-        <label htmlFor="isGraduated">Is Student Graduated: </label>
+      <div className="input checkbox-input">
         <input
           id="isGraduated"
           type="checkbox"
           checked={student.isGraduated}
           onChange={e => handleChange('isGraduated', e.target.checked)}
         />
+        <label htmlFor="isGraduated">Is Student Graduated</label>
       </div>
       <div>
         <CoursesListForm value={student.coursesList} onSubmit={handleCoursesChange} />

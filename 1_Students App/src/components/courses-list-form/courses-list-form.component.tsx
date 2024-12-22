@@ -14,16 +14,19 @@ const CoursesListForm = (props: IProps) => {
     const newList = [...courseList, newCourse];
     setCoursesList(newList);
     props.onSubmit(newList);
+    event.currentTarget["courseName"].value = "";
   }
 
   return (
     <div className="addCourseForm">
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input">
           <label htmlFor="cName">Enter Course: </label>
-          <input id="cName" type="text" name="courseName" />
+          <div className="course-form-input">
+            <input id="cName" type="text" name="courseName"/>
+            <button type="submit">Add Course</button>
+          </div>
         </div>
-        <button type="submit">Add Course</button>
       </form>
       <ul >
         {courseList.map((course, index) => <li key={course + index}>{course}</li>)}

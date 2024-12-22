@@ -1,9 +1,41 @@
 .std-wrapper {
   background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 4px 4px 9px -7px #b4b4b4;
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
   padding: 16px;
   margin-bottom: 20px;
+}
+
+.std-wrapper .data-field {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 20px;
+  border-bottom: #ddd solid 1px;
+}
+
+.std-wrapper .data-field.data-field-list {
+  flex-direction: column;
+}
+
+.std-wrapper .data-field b {
+  color: var(--primary-color);
+
+}
+
+.std-wrapper .absents .data-field{
+  border: 0px;
+}
+
+.std-wrapper .absents .absents-btns {
+  display: flex;
+  gap: 10px;
+  
+}
+
+.std-wrapper .absents .absents-btns  button {
+  flex: 1;
 }
 
 .std-wrapper ul.courses-list {
@@ -13,22 +45,4 @@
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-}
-
-.std-wrapper .data-field {
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  column-gap: 20px;
-}
-
-.std-wrapper .data-field b {
-  color: #5b5b5b;
-}
-
-.std-wrapper .absents {
-  display: flex;
-  justify-content: flex-end;
-  column-gap: 10px;
-  margin-top: 20px;
 }
