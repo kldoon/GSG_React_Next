@@ -91,10 +91,10 @@ const AddForm = (props: IProps) => {
       </div>
       {
         Boolean(errorsList.length) && (
-          <div>
-            <h4>You have the following error/s</h4>
+          <div className='report'>
+            <h4>You have the following error/s:</h4>
             {
-              errorsList.map(error => <p key={error}>{error}</p>)
+              errorsList.map(error => <p key={error}>- {error}</p>)
             }
           </div>
         )

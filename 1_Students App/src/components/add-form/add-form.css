@@ -6,7 +6,6 @@
 .wrapper.addForm.open {
   overflow: hidden;
   max-height: 1000px;
-  z-index: 3;
 }
 
 .wrapper.addForm {
@@ -46,7 +45,6 @@
 .wrapper.addForm .addCourseForm form {
   display: flex;
   justify-content: space-between;
-
   column-gap: 20px;
 }
 
@@ -55,6 +53,20 @@
   list-style-type: none;
   flex-wrap: wrap;
   gap: 10px;
-
   padding: 0;
+}
+
+.wrapper.addForm .report {
+  color: #ee5454;
+  text-align: left;
+  font-size: 12px;
+}
+
+.wrapper.addForm .report h4 {
+  margin: 0;
+}
+
+.wrapper.addForm .report p {
+  margin: 0;
+  line-height: 1em;
 }
