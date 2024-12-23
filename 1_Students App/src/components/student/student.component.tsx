@@ -35,7 +35,7 @@ const Student = (props: IProps) => {
       <div className="data-field">
         <b>Age:</b> {props.age}
       </div>
-      <div className="data-field">
+      <div className="data-field" style={{ color: props.isGraduated ? 'green' : 'orange' }}>
         <b>Is Graduated:</b> {props.isGraduated ? 'Yes' : 'No'}
       </div>
       <div className="data-field">

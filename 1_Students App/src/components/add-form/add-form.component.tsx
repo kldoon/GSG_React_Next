@@ -22,7 +22,7 @@ const AddForm = (props: IProps) => {
 
   const handleSubmit = () => {
     const newStudent: IStudent = { ...student, id: Date.now().toString() };
-    
+
     const errors = validateStudent(newStudent);
     if (errors.length > 0) {
       setErrorsList(errors);
@@ -43,7 +43,10 @@ const AddForm = (props: IProps) => {
 
   return (
     <div className={`wrapper ${props.className} ${isOpen ? 'open' : 'closed'}`}>
-      <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <span>&and;</span> : <span>&or;</span>} {isOpen ? 'Hide' : 'Show'} Add Form</button>
+      <button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <span>&and; Close </span> : <span>&or; Open </span>}
+        Add Form
+      </button>
       <div className="input">
         <label htmlFor="name">Student Name: </label>
         <input
@@ -77,18 +80,24 @@ const AddForm = (props: IProps) => {
         <CoursesListForm value={student.coursesList} onSubmit={handleCoursesChange} />
       </div>
       <div className="Actions">
-        <button onClick={handleSubmit}>Submit</button>
+        <button
+          onClick={handleSubmit}
+          style={{ color: errorsList.length ? 'red' : 'initial' }}
+          // disabled={errorsList.length > 0}
+        >
+          Submit
+        </button>
         <button onClick={handleClear}>Clear</button>
       </div>
       {
-        errorsList.length > 0 ?
+        Boolean(errorsList.length) && (
           <div>
             <h4>You have the following error/s</h4>
             {
               errorsList.map(error => <p key={error}>{error}</p>)
             }
           </div>
-          : null
+        )
       }
     </div>
   )
