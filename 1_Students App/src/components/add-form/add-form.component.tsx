@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './add-form.css';
 import { IStudent } from '../../types';
 import CoursesListForm from '../courses-list-form/courses-list-form.component';
+import { validateStudent } from '../../utils/validation.ts';
 
 const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '' };
 
@@ -13,6 +14,7 @@ interface IProps {
 const AddForm = (props: IProps) => {
   const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
   const [isOpen, setIsOpen] = useState(false);
+  const [errorsList, setErrorsList] = useState<string[]>([]);
 
   const handleChange = (field: string, value: any) => {
     setStudent({ ...student, [field]: value });
@@ -20,8 +22,15 @@ const AddForm = (props: IProps) => {
 
   const handleSubmit = () => {
     const newStudent: IStudent = { ...student, id: Date.now().toString() };
-    props.onSubmit(newStudent);
-    handleClear();
+    
+    const errors = validateStudent(newStudent);
+    if (errors.length > 0) {
+      setErrorsList(errors);
+    } else {
+      setErrorsList([]);
+      props.onSubmit(newStudent);
+      handleClear();
+    }
   }
 
   const handleClear = () => {
@@ -71,6 +80,16 @@ const AddForm = (props: IProps) => {
         <button onClick={handleSubmit}>Submit</button>
         <button onClick={handleClear}>Clear</button>
       </div>
+      {
+        errorsList.length > 0 ?
+          <div>
+            <h4>You have the following error/s</h4>
+            {
+              errorsList.map(error => <p key={error}>{error}</p>)
+            }
+          </div>
+          : null
+      }
     </div>
   )
 };

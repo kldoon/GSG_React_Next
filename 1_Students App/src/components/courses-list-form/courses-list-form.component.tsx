@@ -21,7 +21,7 @@ const CoursesListForm = (props: IProps) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="cName">Enter Course: </label>
-          <input id="cName" type="text" name="courseName" />
+          <input id="cName" type="text" name="courseName" required />
         </div>
         <button type="submit">Add Course</button>
       </form>
