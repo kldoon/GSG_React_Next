@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IProps {
   value: string[];
@@ -7,6 +7,10 @@ interface IProps {
 
 const CoursesListForm = (props: IProps) => {
   const [courseList, setCoursesList] = useState<string[]>(props.value);
+
+  useEffect(() => {
+    setCoursesList(props.value);
+  }, [props.value]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

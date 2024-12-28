@@ -16,12 +16,32 @@ function App() {
     const totalAbs = storedData.reduce((prev, cur) => { return prev + cur.absents }, 0);
     setTotalAbsents(totalAbs);
     setStudentsList(storedData);
-
     return () => {
+      // Cleanup function
+      // This wil run when the App component is unmounted
     };
   }, []);
 
-  const dataChanged = (newData: IStudent[]) => {
+  useEffect(() => {
+    storeData(studentsList);
+  }, [studentsList]);
+
+  /*
+    useEffect(() => {
+      let sum = 0;
+      for (let i = 0; i < marks.length; i++) {
+        sum += marks[i];
+      }
+      const avg = (sum / coursesCount) / passedHours;
+      console.log(avg);
+    }, [marks, coursesCount, passedHours]);
+  */
+
+  // useEffect(() => {
+  //   console.log("Data changed!");
+  // }, [studentsList]);
+
+  const storeData = (newData: IStudent[]) => {
     localStorage.setItem('students-list', JSON.stringify(newData));
   }
 
@@ -29,20 +49,15 @@ function App() {
     const newList = [...studentsList];
     newList.shift();  // removes the first item
     setStudentsList(newList);
-    dataChanged(newList);
   }
 
   const handleAbsentChange = (id: string, change: number) => {
     setTotalAbsents(totalAbsents + change);
-    const newList = studentsList.map(std => std.id === id ? { ...std, absents: std.absents + change } : std);
-    setStudentsList(newList);
-    dataChanged(newList);
+    setStudentsList(studentsList.map(std => std.id === id ? { ...std, absents: std.absents + change } : std));
   }
 
   const handleAddStudent = (newStudent: IStudent) => {
-    const newList = [newStudent, ...studentsList];
-    setStudentsList(newList);
-    dataChanged(newList);
+    setStudentsList([newStudent, ...studentsList]);
   }
 
   const h1Style = { color: '#69247C', fontSize: '24px' };

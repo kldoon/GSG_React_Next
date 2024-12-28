@@ -9,6 +9,27 @@ interface IProps extends IStudent {
 
 const Student = (props: IProps) => {
   const [absents, setAbsents] = useState(props.absents);
+  const [absentColor, setAbsentColor] = useState('#213547');
+
+  // useEffect(() => {
+  //   // setAbsents(absents + 1);   // This will lead to a infinity loop
+  //   if (absents > 10) {
+  //     setAbsents(0);
+  //   }
+  // }, [absents]);
+
+  useEffect(() => {
+    if (absents >= 10) {
+      setAbsentColor('#ff0000');
+    } else if (absents >= 7) {
+      setAbsentColor('#fd9c0e');
+    } else if (absents >= 5) {
+      setAbsentColor('#d6c728');
+    } else {
+      setAbsentColor('#213547');
+    }
+  }, [absents]);
+
   useEffect(() => {
     console.log("Hello from Student component!");
 
@@ -54,7 +75,7 @@ const Student = (props: IProps) => {
         <CoursesList list={props.coursesList} />
       </div>
       <div className="absents">
-        <b>Absents:</b> {absents}
+        <b style={{ color: absentColor }}>Absents:</b> {absents}
         <button onClick={addAbsent}>+</button>
         <button onClick={removeAbsent}>-</button>
         <button onClick={resetAbsent}>Reset</button>
