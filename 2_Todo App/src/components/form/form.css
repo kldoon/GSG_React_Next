@@ -2,4 +2,16 @@
   border: 1px solid black;
   margin: 20px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.form-wrapper .task-input {
+  flex-basis: 100%;
+  padding: 10px;
+}
+
+.form-wrapper .submit {
+  padding: 10px;
 }

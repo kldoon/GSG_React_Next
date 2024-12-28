@@ -10,11 +10,21 @@ interface IProps {
 
 const TodoItem = ({ data, onToggle, onDelete }: IProps) => {
   return (
-    <div className="item-wrapper">
-      <input type="checkbox" checked={data.isDone} onChange={onToggle} data-item-id={data.id} />
-      <span>{data.title}</span>
-      <span><Trash size={24} color="#cf2020" weight="fill" onClick={onDelete} /></span>
-      <span>isUrgent: {data.isUrgent.toString()}</span>
+    <div className={`item-wrapper ${data.isDone ? 'done' : ''} ${data.isUrgent ? 'urgent' : ''}`}>
+      <span className="item-details">
+        <div className="round-checkbox">
+          <input
+            type="checkbox"
+            id="checkbox"
+            checked={data.isDone}
+            onChange={onToggle}
+            data-item-id={data.id}
+          />
+          <label htmlFor="checkbox"></label>
+        </div>
+        <span>{data.title}</span>
+      </span>
+      <Trash className="delete" size={20} color="#cf2020" weight="fill" onClick={onDelete} />
     </div>
   )
 }

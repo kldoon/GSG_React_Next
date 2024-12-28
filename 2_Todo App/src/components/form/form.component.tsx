@@ -25,12 +25,12 @@ const Form = (props: IProps) => {
 
   return (
     <form className="form-wrapper" onSubmit={handleSubmit}>
-      <input type="text" name="task" placeholder="Type todo here..." />
+      <input className="task-input" type="text" name="task" placeholder="Type todo here..." />
       <div>
-        <label htmlFor="urgent">Urgent</label>
         <input type="checkbox" id="urgent" name="urgent" />
+        <label htmlFor="urgent">Urgent</label>
       </div>
-      <input type="submit" value="Add Todo" />
+      <input className="submit" type="submit" value="Add Todo" />
     </form>
   )
 }
