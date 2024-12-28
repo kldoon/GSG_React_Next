@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './add-form.css';
 import { IStudent } from '../../types';
 import CoursesListForm from '../courses-list-form/courses-list-form.component';
 import { validateStudent } from '../../utils/validation.ts';
 
-const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '' };
+const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '', absents: 0 };
 
 interface IProps {
   className?: string;
@@ -15,6 +15,9 @@ const AddForm = (props: IProps) => {
   const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
   const [isOpen, setIsOpen] = useState(false);
   const [errorsList, setErrorsList] = useState<string[]>([]);
+  useEffect(() => {
+    console.log("Hello from Add Form component!");
+  }, []);
 
   const handleChange = (field: string, value: any) => {
     setStudent({ ...student, [field]: value });
@@ -83,7 +86,7 @@ const AddForm = (props: IProps) => {
         <button
           onClick={handleSubmit}
           style={{ color: errorsList.length ? 'red' : 'initial' }}
-          // disabled={errorsList.length > 0}
+        // disabled={errorsList.length > 0}
         >
           Submit
         </button>

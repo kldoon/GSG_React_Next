@@ -1,30 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IStudent } from '../../types';
 import CoursesList from '../courses-list/courses-list.component';
 import './student.css';
 
 interface IProps extends IStudent {
-  onAbsentChange: (name: string, change: number) => void;
+  onAbsentChange: (id: string, change: number) => void;
 }
 
 const Student = (props: IProps) => {
-  const [absents, setAbsents] = useState(0);
+  const [absents, setAbsents] = useState(props.absents);
+  useEffect(() => {
+    console.log("Hello from Student component!");
+
+    // The code in this function will be called on the unmount
+    return () => {
+      console.log(`Student ${props.name}, has been deleted! `);
+      // if (confirm("Do you want to back up the item before deletion!")) {
+      //   localStorage.setItem('back-up', JSON.stringify(props));
+      // }
+    };
+  }, []);
 
   const addAbsent = () => {
     setAbsents(absents + 1);
-    props.onAbsentChange(props.name, +1);
+    props.onAbsentChange(props.id, +1);
   }
 
   const removeAbsent = () => {
     if (absents - 1 >= 0) {
       setAbsents(absents - 1);
-      props.onAbsentChange(props.name, -1);
+      props.onAbsentChange(props.id, -1);
     }
   }
 
   const resetAbsent = () => {
     setAbsents(0);
-    props.onAbsentChange(props.name, -absents);
+    props.onAbsentChange(props.id, -absents);
   }
 
   return (
