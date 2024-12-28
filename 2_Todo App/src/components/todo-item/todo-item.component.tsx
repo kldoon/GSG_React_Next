@@ -15,12 +15,12 @@ const TodoItem = ({ data, onToggle, onDelete }: IProps) => {
         <div className="round-checkbox">
           <input
             type="checkbox"
-            id="checkbox"
+            id={`checkbox-${data.id}`}
             checked={data.isDone}
             onChange={onToggle}
             data-item-id={data.id}
           />
-          <label htmlFor="checkbox"></label>
+          <label htmlFor={`checkbox-${data.id}`}></label>
         </div>
         <span>{data.title}</span>
       </span>
