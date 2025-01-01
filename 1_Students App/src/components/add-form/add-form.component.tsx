@@ -15,6 +15,7 @@ const AddForm = (props: IProps) => {
   const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
   const [isOpen, setIsOpen] = useState(false);
   const [errorsList, setErrorsList] = useState<string[]>([]);
+
   useEffect(() => {
     console.log("Hello from Add Form component!");
   }, []);

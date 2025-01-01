@@ -4,10 +4,17 @@ import Dashboard from './components/dashboard/dashboard-component'
 import Form from './components/form/form.component'
 import TodoList from './components/todo-list/todo-list.component'
 import { ITodoItem } from './components/types'
+import useLocalStorage from './hooks/local-storage.hook'
 
 function App() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
   const [date, setDate] = useState('');
+
+  const { storedData } = useLocalStorage(todos, 'todo-list');
+
+  useEffect(() => {
+    setTodos(storedData || []);
+  }, [storedData]);
 
   useEffect(() => {
     setInterval(() => {
