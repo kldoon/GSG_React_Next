@@ -1,12 +1,12 @@
-import React from 'react'
-import './form.css'
+import React from 'react';
+import './form.css';
 import { ITodoItem } from '../types';
 
 interface IProps {
   onSubmit: (item: ITodoItem) => void;
 }
 
-const Form = (props: IProps) => {
+const Form = React.memo((props: IProps) => {
   console.log("Re render [form]");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,6 +35,6 @@ const Form = (props: IProps) => {
       <input className="submit" type="submit" value="Add Todo" />
     </form>
   )
-}
+});
 
-export default Form
+export default Form;
