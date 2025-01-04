@@ -1,20 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import './App.css'
 import Dashboard from './components/dashboard/dashboard-component'
 import Form from './components/form/form.component'
 import TodoList from './components/todo-list/todo-list.component'
 import { ITodoItem } from './components/types'
 import useLocalStorage from './hooks/local-storage.hook'
+import reducer from './state/reducer'
 
 function App() {
-  const [todos, setTodos] = useState<ITodoItem[]>([]);
   const [date, setDate] = useState('');
   const timerRef = useRef<number>();
+  const [state, dispatch] = useReducer(reducer, { todos: [], userName: 'Ahmad' });
 
-  const { storedData } = useLocalStorage(todos, 'todo-list');
+  const { storedData } = useLocalStorage(state.todos, 'todo-list');
 
   useEffect(() => {
-    setTodos(storedData || []);
+    dispatch({ type: 'INIT_TODOS', payload: storedData || [] });
   }, [storedData]);
 
   useEffect(() => {
@@ -30,27 +31,28 @@ function App() {
   }
 
   const handleNewItem = useCallback((item: ITodoItem) => {
-    setTodos([...todos, item]);
-  }, [todos]);
+    dispatch({ type: 'ADD_TODO', payload: item });
+  }, [state.todos]);
 
   const handleTaskToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const itemId = e.target.dataset["itemId"];
-    setTodos(todos.map(item => (item.id === Number(itemId)) ? { ...item, isDone: !item.isDone } : item));
+    const itemId = Number(e.target.dataset["itemId"]);
+    dispatch({ type: 'TOGGLE_TODO', payload: itemId });
   }
 
   const handleDelete = (index: number) => {
     // This will delete the item at index!
-    setTodos([...todos.slice(0, index), ...todos.slice(index + 1, todos.length)]);
+    const itemId = state.todos[index].id;
+    dispatch({ type: 'REMOVE_TODO', payload: itemId });
   }
 
   console.log('Re render [App]');
 
   return (
     <div>
-      <h1>Todo App - {date} <button onClick={stopTime}>Stop</button></h1>
+      <h1>Todo App - Hello {state.userName} - {date} <button onClick={stopTime}>Stop</button></h1>
       <Form onSubmit={handleNewItem} />
-      <Dashboard items={todos} />
-      <TodoList items={todos} onToggle={handleTaskToggle} onDelete={handleDelete} />
+      <Dashboard items={state.todos} />
+      <TodoList items={state.todos} onToggle={handleTaskToggle} onDelete={handleDelete} />
     </div>
   )
 }
