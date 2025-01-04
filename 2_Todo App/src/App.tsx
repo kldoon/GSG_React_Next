@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import Dashboard from './components/dashboard/dashboard-component'
 import Form from './components/form/form.component'
@@ -9,6 +9,7 @@ import useLocalStorage from './hooks/local-storage.hook'
 function App() {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
   const [date, setDate] = useState('');
+  const timerRef = useRef<number>();
 
   const { storedData } = useLocalStorage(todos, 'todo-list');
 
@@ -17,10 +18,16 @@ function App() {
   }, [storedData]);
 
   useEffect(() => {
-    setInterval(() => {
-      setDate(new Date().toTimeString());
+    timerRef.current = setInterval(() => {
+      setDate(new Date().toLocaleTimeString());
     }, 1000);
   }, []);
+
+  const stopTime = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+  }
 
   const handleNewItem = useCallback((item: ITodoItem) => {
     setTodos([...todos, item]);
@@ -40,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <h1>Todo App - {date}</h1>
+      <h1>Todo App - {date} <button onClick={stopTime}>Stop</button></h1>
       <Form onSubmit={handleNewItem} />
       <Dashboard items={todos} />
       <TodoList items={todos} onToggle={handleTaskToggle} onDelete={handleDelete} />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import { IStudent } from './types';
 
@@ -9,6 +9,7 @@ import useLocalStorage from './hooks/local-storage.hook';
 function App() {
   const [studentsList, setStudentsList] = useState<IStudent[]>([]);
   const [totalAbsents, setTotalAbsents] = useState(0);
+  const lastStdRef = useRef<HTMLDivElement>(null);
 
   const { storedData } = useLocalStorage(studentsList, 'students-list');
 
@@ -34,6 +35,12 @@ function App() {
     setStudentsList([newStudent, ...studentsList]);
   }
 
+  const scrollToLast = () => {
+    if (lastStdRef.current) {
+      lastStdRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   const h1Style = { color: '#69247C', fontSize: '24px' };
 
   return (
@@ -42,6 +49,7 @@ function App() {
       <AddForm className="addForm" onSubmit={handleAddStudent} />
       <div className='stats'>
         <button onClick={removeFirst}>POP Student</button>
+        <button onClick={scrollToLast}>Scroll to Last</button>
         <b style={{ fontSize: '12px', fontWeight: 100, color: 'gray' }}>Total Absents {totalAbsents}</b>
       </div>
       {
@@ -59,6 +67,7 @@ function App() {
         )
         )
       }
+      <div ref={lastStdRef}></div>
     </div>
   )
 }
