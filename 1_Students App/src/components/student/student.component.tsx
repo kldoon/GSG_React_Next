@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { IStudent } from '../../types';
 import CoursesList from '../courses-list/courses-list.component';
 import './student.css';
+import { Link } from 'react-router-dom';
 
 interface IProps extends IStudent {
   onAbsentChange: (id: string, change: number) => void;
@@ -10,11 +11,8 @@ interface IProps extends IStudent {
 const Student = (props: IProps) => {
   const [absents, setAbsents] = useState(props.absents);
   const [absentColor, setAbsentColor] = useState('#213547');
-  const prevAbsents = useRef<number>(props.absents); // useRef(initialValue)
+  const prevAbsents = useRef<number>(props.absents);
 
-  // useEffect(() => {
-  //   prevAbsents.current = absents;
-  // }, [absents]);
 
   useEffect(() => {
     if (absents >= 10) {
@@ -27,18 +25,6 @@ const Student = (props: IProps) => {
       setAbsentColor('#213547');
     }
   }, [absents]);
-
-  useEffect(() => {
-    console.log("Hello from Student component!");
-
-    // The code in this function will be called on the unmount
-    return () => {
-      console.log(`Student ${props.name}, has been deleted! `);
-      // if (confirm("Do you want to back up the item before deletion!")) {
-      //   localStorage.setItem('back-up', JSON.stringify(props));
-      // }
-    };
-  }, []);
 
   const addAbsent = () => {
     prevAbsents.current = absents;
@@ -63,7 +49,7 @@ const Student = (props: IProps) => {
   return (
     <div className="std-wrapper">
       <div className="data-field">
-        <b>Student:</b> {props.name.toUpperCase() + '!'}
+        <b>Student:</b> <Link to={`/student/${props.id}`}>{props.name.toUpperCase() + '!'}</Link>
       </div>
       <div className="data-field">
         <b>Age:</b> {props.age}
