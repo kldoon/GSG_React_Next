@@ -21,10 +21,10 @@ body {
   margin-top: 0;
 }
 
-.main>.stats {
+.main>.stats, .main>.filter {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .main.wrapper {
