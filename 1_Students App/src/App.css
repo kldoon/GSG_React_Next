@@ -1,19 +1,16 @@
 body {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  background-color: #fff6eb;
 }
 
 #root {
-  max-width: 100%;
-  margin: 0;
-  padding: 0 2rem;
-  text-align: center;
+  width: 100%;
 }
 
 .main {
-  max-width: 600px;
-  background-color: #F9E6CF;
-  margin: 0 auto;
   padding: 30px 20px;
 }
 
@@ -21,10 +18,16 @@ body {
   margin-top: 0;
 }
 
-.main>.stats, .main>.filter {
+.main-screen>.stats, .main-screen>.filter {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 10px;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.main-screen>.stats>:last-child {
+  margin-left: auto;
 }
 
 .main.wrapper {
@@ -33,9 +36,66 @@ body {
 
 nav {
   margin: 20px 0;
-  border-top: 2px solid #DA498D;
   border-bottom: 2px solid #DA498D;
-  padding: 5px 0;
   display: flex;
   column-gap: 10px;
+}
+
+nav>a {
+  padding: 3px;
+  font-size: 18px;
+  font-weight: 400;
+  /* TODO: selected tab */
+}
+
+nav>a:hover {
+  text-shadow: 0px 0px 2px rgb(105, 36, 124);
+  color: #93729d;
+}
+
+.main-screen .list {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.main-screen .list>.std-wrapper {
+  flex: 0;
+  flex-basis: 43%;
+}
+
+[class$="-screen"] h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #DA498D;
+  text-transform: uppercase;
+  text-align: left;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.add-screen, .about-screen {
+  min-height: 500px;
+}
+
+div.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #DA498D;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

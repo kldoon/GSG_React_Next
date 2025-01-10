@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div style={{ minHeight: '80vh', width: '600px', maxWidth: '600px' }}>
+    <div className="about-screen">
       <h2>About Students App</h2>
       <p>
         This is an app that we use to explain topics of react in GSG training.<br />

@@ -1,5 +1,5 @@
 .wrapper.addForm.closed {
-  max-height: 28px;
+  max-height: 32px;
   overflow: hidden;
 }
 
@@ -16,35 +16,30 @@
   border-right: 3px solid gray;
   border-radius: 4px;
   padding-right: 5px;
-  background-color: #F9E6CF;
-  z-index: 2;
+  background-color: #fff6eb;
   transition: 200ms max-height ease-in;
 }
 
 .wrapper.addForm .input {
   display: flex;
-  justify-content: space-between;
-
+  column-gap: 10px;
 }
 
-.wrapper.addForm input {
-  font-size: 14px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #FAC67A;
-  outline: 0;
+.wrapper.addForm label {
+  min-width: 110px;
+  display: inline-block;
+  text-align: left;
 }
 
 .wrapper.addForm .Actions {
   display: flex;
   justify-content: flex-end;
   column-gap: 10px;
-
 }
 
 .wrapper.addForm .addCourseForm form {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   column-gap: 20px;
 }
 
@@ -69,4 +64,9 @@
 .wrapper.addForm .report p {
   margin: 0;
   line-height: 1em;
+}
+
+.wrapper.addForm .toggle-btn {
+  width: 150px;
+  margin-left: auto;
 }

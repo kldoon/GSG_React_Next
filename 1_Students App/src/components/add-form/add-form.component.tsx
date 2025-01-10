@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import './add-form.css';
+import { useEffect, useState } from 'react';
 import { IStudent } from '../../types';
 import CoursesListForm from '../courses-list-form/courses-list-form.component';
 import { validateStudent } from '../../utils/validation.ts';
@@ -13,7 +13,7 @@ interface IProps {
 
 const AddForm = (props: IProps) => {
   const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [errorsList, setErrorsList] = useState<string[]>([]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const AddForm = (props: IProps) => {
 
   return (
     <div className={`wrapper ${props.className} ${isOpen ? 'open' : 'closed'}`}>
-      <button onClick={() => setIsOpen(!isOpen)}>
+      <button className='toggle-btn' onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <span>&and; Close </span> : <span>&or; Open </span>}
         Add Form
       </button>
@@ -72,7 +72,7 @@ const AddForm = (props: IProps) => {
         />
       </div>
       <div className="input">
-        <label htmlFor="isGraduated">Is Student Graduated: </label>
+        <label htmlFor="isGraduated">Is Graduated: </label>
         <input
           id="isGraduated"
           type="checkbox"
@@ -80,14 +80,11 @@ const AddForm = (props: IProps) => {
           onChange={e => handleChange('isGraduated', e.target.checked)}
         />
       </div>
-      <div>
-        <CoursesListForm value={student.coursesList} onSubmit={handleCoursesChange} />
-      </div>
+      <CoursesListForm value={student.coursesList} onSubmit={handleCoursesChange} />
       <div className="Actions">
         <button
           onClick={handleSubmit}
           style={{ color: errorsList.length ? 'red' : 'initial' }}
-        // disabled={errorsList.length > 0}
         >
           Submit
         </button>
