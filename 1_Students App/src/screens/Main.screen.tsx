@@ -3,6 +3,7 @@ import Student from "../components/student/student.component";
 import { IStudent } from "../types";
 
 import { useSearchParams } from "react-router-dom";
+import React from "react";
 
 interface IProps {
   totalAbsents: number,
@@ -10,6 +11,8 @@ interface IProps {
   onAbsent: (id: string, change: number) => void,
   onRemove: () => void,
 }
+
+const COURSES_FILTERS = ['Math', 'HTML', 'CSS', 'OOP'];
 
 const Main = (props: IProps) => {
   const { totalAbsents, studentsList } = props;
@@ -27,6 +30,8 @@ const Main = (props: IProps) => {
   useEffect(() => {
     const query = params.get('q') || '';
     const graduated = params.get('graduated');
+    const courses = params.getAll('courses');
+
     if (query) {
       setFilteredList(studentsList.filter(std => std.name.toLowerCase().includes(query.toLowerCase())));
     } else {
@@ -37,6 +42,14 @@ const Main = (props: IProps) => {
       setFilteredList(oldState => (oldState.filter(std => std.isGraduated)));
     } else if (graduated === 'non-grad') {
       setFilteredList(oldState => (oldState.filter(std => std.isGraduated == false)));
+    }
+
+    if (courses.length) {
+      // OR
+      // setFilteredList(oldState => (oldState.filter(std => std.coursesList.some(c => (courses.includes(c))))));
+
+      // AND
+      setFilteredList(oldState => (oldState.filter(std => courses.every(c => (std.coursesList.includes(c))))));
     }
   }, [params, studentsList]);
 
@@ -60,6 +73,21 @@ const Main = (props: IProps) => {
     setParams(params);
   }
 
+  const handleCourseFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const course = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+      params.append('courses', course);
+    } else {
+      params.delete('courses', course);
+    }
+    setParams(params);
+  }
+
+  if (props.studentsList.length === 0) {
+    return <div className="spinner"></div>;
+  }
+
   return (
     <div className="main-screen">
       <h2>Students List</h2>
@@ -75,6 +103,22 @@ const Main = (props: IProps) => {
           <option value="grad">Graduated</option>
           <option value="non-grad">Not Graduated</option>
         </select>
+        <div>
+          {
+            COURSES_FILTERS.map(c => (
+              <React.Fragment key={c}>
+                <input
+                  id={c}
+                  type="checkbox"
+                  value={c}
+                  onChange={handleCourseFilter}
+                  checked={params.getAll('courses').includes(c)}
+                />
+                <label htmlFor={c}>{c}</label>&nbsp;&nbsp;
+              </React.Fragment>
+            ))
+          }
+        </div>
       </div>
       {
         filteredList.length
@@ -97,7 +141,7 @@ const Main = (props: IProps) => {
               }
             </div>
           )
-          : <div className="spinner"></div>
+          : <h3>No results found!</h3>
       }
       <div ref={lastStdRef}></div>
     </div>
