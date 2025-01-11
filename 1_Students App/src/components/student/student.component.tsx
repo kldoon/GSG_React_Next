@@ -40,7 +40,7 @@ const Student = (props: IProps) => {
       prevAbsents.current = absents;
       setAbsents(absents - 1);
       if (props.onAbsentChange) {
-        props.onAbsentChange(props.id, +1);
+        props.onAbsentChange(props.id, -1);
       }
     }
   }
@@ -49,7 +49,7 @@ const Student = (props: IProps) => {
     prevAbsents.current = absents;
     setAbsents(0);
     if (props.onAbsentChange) {
-      props.onAbsentChange(props.id, +1);
+      props.onAbsentChange(props.id, -absents);
     }
   }
 
