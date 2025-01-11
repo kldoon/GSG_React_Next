@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { IStudent } from '../../types';
 import CoursesListForm from '../courses-list-form/courses-list-form.component';
 import { validateStudent } from '../../utils/validation.ts';
+import { useNavigate } from 'react-router-dom';
 
 const INITIAL_STUDENT = { age: 0, coursesList: [], id: '', isGraduated: false, name: '', absents: 0 };
 
@@ -15,6 +16,8 @@ const AddForm = (props: IProps) => {
   const [student, setStudent] = useState<IStudent>(INITIAL_STUDENT);
   const [isOpen, setIsOpen] = useState(true);
   const [errorsList, setErrorsList] = useState<string[]>([]);
+  const [message, setMessage] = useState('');
+  const nav = useNavigate();
 
   useEffect(() => {
     console.log("Hello from Add Form component!");
@@ -34,6 +37,10 @@ const AddForm = (props: IProps) => {
       setErrorsList([]);
       props.onSubmit(newStudent);
       handleClear();
+      setMessage('Student Added Successfully');
+      setTimeout(() => {
+        nav('/');
+      }, 1500);
     }
   }
 
@@ -100,6 +107,7 @@ const AddForm = (props: IProps) => {
           </div>
         )
       }
+      {Boolean(message) && <h4>{message}</h4>}
     </div>
   )
 };

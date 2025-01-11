@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Student from '../components/student/student.component'
 import { IStudent } from '../types';
 import { useEffect, useState } from 'react';
 
 const StudentDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [currentStudent, setCurrentStudent] = useState<IStudent>();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const StudentDetails = () => {
       if (std) {
         setCurrentStudent(std);
       } else {
-        // TODO: redirect
+        navigate('/404');
       }
     }
   }, [id]);

@@ -2,7 +2,7 @@ import './App.css'
 import Main from './screens/Main.screen';
 import About from './screens/About.screen';
 import NotFound from './screens/NotFound.screen';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import StudentDetails from './screens/StudentDetails.screen';
 import { useState, useEffect } from 'react';
 import useLocalStorage from './hooks/local-storage.hook';
@@ -14,6 +14,7 @@ function App() {
 
   const [studentsList, setStudentsList] = useState<IStudent[]>([]);
   const [totalAbsents, setTotalAbsents] = useState(0);
+  const location = useLocation();
 
   const { storedData } = useLocalStorage(studentsList, 'students-list');
 
@@ -42,27 +43,25 @@ function App() {
   return (
     <div className="main wrapper">
       <h1 style={h1Style}>Welcome to GSG React/Next Course</h1>
-      <BrowserRouter>
-        <nav>
-          <Link to='/'>Home Page</Link>
-          <Link to='/add'>Add Student</Link>
-          <Link to='/about'>About App</Link>
-        </nav>
-        <Routes>
-          <Route path='/' element={
-            <Main
-              studentsList={studentsList}
-              totalAbsents={totalAbsents}
-              onAbsent={handleAbsentChange}
-              onRemove={removeFirst}
-            />
-          } />
-          <Route path='/add' element={<AddStudent onAdd={handleAddStudent} />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/student/:id' element={<StudentDetails />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <nav>
+        <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home Page</Link>
+        <Link to='/add' className={location.pathname === '/add' ? 'active' : ''}>Add Student</Link>
+        <Link to='/about' className={location.pathname === '/about' ? 'active' : ''}>About App</Link>
+      </nav>
+      <Routes>
+        <Route path='/' element={
+          <Main
+            studentsList={studentsList}
+            totalAbsents={totalAbsents}
+            onAbsent={handleAbsentChange}
+            onRemove={removeFirst}
+          />
+        } />
+        <Route path='/add' element={<AddStudent onAdd={handleAddStudent} />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/student/:id' element={<StudentDetails />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </div>
   )
 }

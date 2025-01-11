@@ -53,6 +53,10 @@ nav>a:hover {
   color: #93729d;
 }
 
+nav>a.active {
+  border-bottom: 3px solid #DA498D;
+}
+
 .main-screen .list {
   flex-wrap: wrap;
   display: flex;
