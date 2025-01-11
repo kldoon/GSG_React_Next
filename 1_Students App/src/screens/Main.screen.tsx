@@ -26,29 +26,55 @@ const Main = (props: IProps) => {
 
   useEffect(() => {
     const query = params.get('q') || '';
+    const graduated = params.get('graduated');
     if (query) {
       setFilteredList(studentsList.filter(std => std.name.toLowerCase().includes(query.toLowerCase())));
     } else {
       setFilteredList(studentsList);
     }
+
+    if (graduated === 'grad') {
+      setFilteredList(oldState => (oldState.filter(std => std.isGraduated)));
+    } else if (graduated === 'non-grad') {
+      setFilteredList(oldState => (oldState.filter(std => std.isGraduated == false)));
+    }
   }, [params, studentsList]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
-    params.set('q', query);
+    if (query.length) {
+      params.set('q', query);
+    } else {
+      params.delete('q');
+    }
+    setParams(params);
+  }
+
+  const handleGardFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const v = event.target.value;
+    if (v === 'all') {
+      params.delete('graduated');
+    } else {
+      params.set('graduated', v);
+    }
     setParams(params);
   }
 
   return (
     <div className="main-screen">
       <h2>Students List</h2>
-      <div className='stats'>
+      <div className="stats">
         <button onClick={props.onRemove}>POP Student</button>
         <button onClick={scrollToLast}>Scroll to Last</button>
         <b style={{ fontSize: '12px', fontWeight: 100, color: 'gray' }}>Total Absents {totalAbsents}</b>
       </div>
-      <div className='filter'>
-        <input type="text" placeholder="Search" onChange={handleSearch} value={params.get('q') || ''} />
+      <div className="filter">
+        <input type="search" placeholder="Search" onChange={handleSearch} value={params.get('q') || ''} />
+        <select value={params.get('graduated') || 'all'} onChange={handleGardFilter}>
+          <option value="all">All</option>
+          <option value="grad">Graduated</option>
+          <option value="non-grad">Not Graduated</option>
+        </select>
       </div>
       {
         filteredList.length
@@ -71,8 +97,7 @@ const Main = (props: IProps) => {
               }
             </div>
           )
-          :
-          <div className="spinner"></div>
+          : <div className="spinner"></div>
       }
       <div ref={lastStdRef}></div>
     </div>

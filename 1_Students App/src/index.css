@@ -54,7 +54,7 @@ button:hover {
   background-color: #dc9fbc;
 }
 
-input {
+input, select {
   font-size: 14px;
   padding: 5px;
   border-radius: 5px;
