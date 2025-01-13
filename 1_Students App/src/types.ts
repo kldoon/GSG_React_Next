@@ -6,3 +6,8 @@ export interface IStudent {
   isGraduated: boolean;
   coursesList: string[];
 }
+
+export interface IUserData {
+  userName: string;
+  role: string;
+}

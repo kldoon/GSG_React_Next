@@ -8,6 +8,8 @@ import { useState, useEffect } from 'react';
 import useLocalStorage from './hooks/local-storage.hook';
 import { IStudent } from './types';
 import AddStudent from './screens/AddStudent.screen';
+import { AuthProvider } from './providers/authProvider';
+import Login from './screens/Login.screen';
 
 function App() {
   const h1Style = { color: '#69247C', fontSize: '24px' };
@@ -41,28 +43,32 @@ function App() {
   }
 
   return (
-    <div className="main wrapper">
-      <h1 style={h1Style}>Welcome to GSG React/Next Course</h1>
-      <nav>
-        <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home Page</Link>
-        <Link to='/add' className={location.pathname === '/add' ? 'active' : ''}>Add Student</Link>
-        <Link to='/about' className={location.pathname === '/about' ? 'active' : ''}>About App</Link>
-      </nav>
-      <Routes>
-        <Route path='/' element={
-          <Main
-            studentsList={studentsList}
-            totalAbsents={totalAbsents}
-            onAbsent={handleAbsentChange}
-            onRemove={removeFirst}
-          />
-        } />
-        <Route path='/add' element={<AddStudent onAdd={handleAddStudent} />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/student/:id' element={<StudentDetails />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </div>
+    <AuthProvider>
+      <div className="main wrapper">
+        <h1 style={h1Style}>Welcome to GSG React/Next Course</h1>
+        <nav>
+          <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home Page</Link>
+          <Link to='/add' className={location.pathname === '/add' ? 'active' : ''}>Add Student</Link>
+          <Link to='/about' className={location.pathname === '/about' ? 'active' : ''}>About App</Link>
+        </nav>
+        <Routes>
+          <Route path='/'
+            element={
+              <Main
+                studentsList={studentsList}
+                totalAbsents={totalAbsents}
+                onAbsent={handleAbsentChange}
+                onRemove={removeFirst}
+              />
+            } />
+          <Route path='/add' element={<AddStudent onAdd={handleAddStudent} />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/student/:id' element={<StudentDetails />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </div>
+    </AuthProvider>
   )
 }
 

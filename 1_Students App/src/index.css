@@ -49,6 +49,11 @@ button {
   border-color: #FAC67A;
 }
 
+button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 button:hover {
   border-color: #866634;
   background-color: #dc9fbc;
