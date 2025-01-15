@@ -34,29 +34,6 @@ body {
   border-left: 8px solid #DA498D;
 }
 
-nav {
-  margin: 20px 0;
-  border-bottom: 2px solid #DA498D;
-  display: flex;
-  column-gap: 10px;
-}
-
-nav>a {
-  padding: 3px;
-  font-size: 18px;
-  font-weight: 400;
-  /* TODO: selected tab */
-}
-
-nav>a:hover {
-  text-shadow: 0px 0px 2px rgb(105, 36, 124);
-  color: #93729d;
-}
-
-nav>a.active {
-  border-bottom: 3px solid #DA498D;
-}
-
 .main-screen .list {
   flex-wrap: wrap;
   display: flex;
