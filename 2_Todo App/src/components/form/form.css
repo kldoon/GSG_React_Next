@@ -1,5 +1,4 @@
 .form-wrapper {
-  border: 1px solid black;
   margin: 20px;
   padding: 10px;
   display: flex;
@@ -14,4 +13,13 @@
 
 .form-wrapper .submit {
   padding: 10px;
+}
+
+.form-wrapper.light {
+  border: 1px solid black;
+}
+
+.form-wrapper.dark {
+  border: 1px solid white;
+  color: white;
 }

@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+.item-wrapper.dark {
+  border-color: white;
+  color: white;
+}
+
 .item-wrapper.done {
   text-decoration: line-through;
   order: 999999;
@@ -26,7 +31,7 @@
 
 .item-wrapper>.item-details {
   position: relative;
-  padding-left: 10px ;
+  padding-left: 10px;
 }
 
 .round-checkbox label {

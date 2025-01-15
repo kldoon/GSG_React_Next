@@ -5,3 +5,11 @@ body {
 h1 {
   font-size: 16px;
 }
+
+h1.light {
+  color: #000;
+}
+
+h1.dark {
+  color: #fff;
+}

@@ -14,3 +14,16 @@
   padding: 10px;
   width: 100%;
 }
+
+.dashboard-wrapper.light {
+  background-color: rgb(255, 255, 255);
+}
+
+.dashboard-wrapper.dark {
+  background-color: rgb(70, 70, 70);
+  color: #fff;
+}
+
+.dashboard-wrapper.dark>div {
+  border-color: #fff;
+}
