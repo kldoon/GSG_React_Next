@@ -26,14 +26,6 @@ function App() {
     dispatch({ type: "INIT", payload: stdList });
   }, [storedData]);
 
-  const removeFirst = () => {
-    dispatch({ type: "REMOVE_FIRST" });
-  }
-
-  const handleAbsentChange = (id: string, change: number) => {
-    dispatch({ type: "UPDATE_ABSENTS", payload: { id, change } });
-  }
-
   const handleAddStudent = (newStudent: IStudent) => {
     dispatch({ type: "ADD_STUDENT", payload: newStudent });
   }
@@ -47,10 +39,8 @@ function App() {
           element={
             <Guarded roles={[Role.ADMIN, Role.Teacher, Role.GUEST]}>
               <Main
-                studentsList={state.studentsList}
-                totalAbsents={state.totalAbsents}
-                onAbsent={handleAbsentChange}
-                onRemove={removeFirst}
+                state={state}
+                dispatch={dispatch}
               />
             </Guarded>
           } />

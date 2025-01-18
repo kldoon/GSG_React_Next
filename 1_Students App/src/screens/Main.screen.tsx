@@ -4,18 +4,17 @@ import { IStudent } from "../types";
 
 import { useSearchParams } from "react-router-dom";
 import React from "react";
+import { Action, State } from "../state/reducer";
 
 interface IProps {
-  totalAbsents: number,
-  studentsList: IStudent[],
-  onAbsent: (id: string, change: number) => void,
-  onRemove: () => void,
+  state: State;
+  dispatch: React.Dispatch<Action>;
 }
 
 const COURSES_FILTERS = ['Math', 'HTML', 'CSS', 'OOP'];
 
 const Main = (props: IProps) => {
-  const { totalAbsents, studentsList } = props;
+  const { totalAbsents, studentsList } = props.state;
 
   const [filteredList, setFilteredList] = useState<IStudent[]>(studentsList);
   const [params, setParams] = useSearchParams();
@@ -84,7 +83,7 @@ const Main = (props: IProps) => {
     setParams(params);
   }
 
-  if (props.studentsList.length === 0) {
+  if (props.state.studentsList.length === 0) {
     return <div className="spinner"></div>;
   }
 
@@ -92,7 +91,7 @@ const Main = (props: IProps) => {
     <div className="main-screen">
       <h2>Students List</h2>
       <div className="stats">
-        <button onClick={props.onRemove}>POP Student</button>
+        <button onClick={() => props.dispatch({ type: "REMOVE_FIRST" })}>POP Student</button>
         <button onClick={scrollToLast}>Scroll to Last</button>
         <b style={{ fontSize: '12px', fontWeight: 100, color: 'gray' }}>Total Absents {totalAbsents}</b>
       </div>
@@ -134,8 +133,8 @@ const Main = (props: IProps) => {
                     absents={student.absents}
                     isGraduated={student.isGraduated}
                     coursesList={student.coursesList}
-                    onAbsentChange={props.onAbsent}
                     mode="list"
+                    dispatch={props.dispatch}
                   />
                 ))
               }

@@ -1,9 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { IStudent } from '../../types';
 import { AuthContext } from '../../providers/authProvider';
+import { Action } from '../../state/reducer';
 
 interface IProps extends IStudent {
-  onAbsentChange?: (id: string, change: number) => void;
+  dispatch: React.Dispatch<Action>;
 }
 
 const Absents = (props: IProps) => {
@@ -27,8 +28,8 @@ const Absents = (props: IProps) => {
   const addAbsent = () => {
     prevAbsents.current = absents;
     setAbsents(absents + 1);
-    if (props.onAbsentChange) {
-      props.onAbsentChange(props.id, +1);
+    if (props.dispatch) {
+      props.dispatch({ type: "UPDATE_ABSENTS", payload: { id: props.id, change: +1 } });
     }
   }
 
@@ -36,8 +37,8 @@ const Absents = (props: IProps) => {
     if (absents - 1 >= 0) {
       prevAbsents.current = absents;
       setAbsents(absents - 1);
-      if (props.onAbsentChange) {
-        props.onAbsentChange(props.id, -1);
+      if (props.dispatch) {
+        props.dispatch({ type: "UPDATE_ABSENTS", payload: { id: props.id, change: -1 } });
       }
     }
   }
@@ -45,8 +46,8 @@ const Absents = (props: IProps) => {
   const resetAbsent = () => {
     prevAbsents.current = absents;
     setAbsents(0);
-    if (props.onAbsentChange) {
-      props.onAbsentChange(props.id, -absents);
+    if (props.dispatch) {
+      props.dispatch({ type: "UPDATE_ABSENTS", payload: { id: props.id, change: -absents } });
     }
   }
 
