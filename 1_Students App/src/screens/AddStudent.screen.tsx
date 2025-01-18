@@ -1,15 +1,14 @@
+import { useContext } from "react";
 import AddForm from "../components/add-form/add-form.component";
-import { IStudent } from "../types";
+import { StateContext } from "../providers/stateProvider";
 
-interface IProps {
-  onAdd: (newStd: IStudent) => void
-}
+const AddStudent = () => {
+  const { dispatch } = useContext(StateContext);
 
-const AddStudent = (props: IProps) => {
   return (
     <div className="add-screen">
       <h2>Add New Student</h2>
-      <AddForm className="addForm" onSubmit={props.onAdd} />
+      <AddForm className="addForm" onSubmit={newStudent => dispatch({ type: "ADD_STUDENT", payload: newStudent })} />
     </div>
   )
 }

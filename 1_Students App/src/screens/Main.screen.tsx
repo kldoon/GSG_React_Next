@@ -1,20 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Student from "../components/student/student.component";
 import { IStudent } from "../types";
-
 import { useSearchParams } from "react-router-dom";
 import React from "react";
-import { Action, State } from "../state/reducer";
-
-interface IProps {
-  state: State;
-  dispatch: React.Dispatch<Action>;
-}
+import { StateContext } from "../providers/stateProvider";
 
 const COURSES_FILTERS = ['Math', 'HTML', 'CSS', 'OOP'];
 
-const Main = (props: IProps) => {
-  const { totalAbsents, studentsList } = props.state;
+const Main = () => {
+  const { state, dispatch } = useContext(StateContext);
+
+  const { totalAbsents, studentsList } = state;
 
   const [filteredList, setFilteredList] = useState<IStudent[]>(studentsList);
   const [params, setParams] = useSearchParams();
@@ -83,7 +79,7 @@ const Main = (props: IProps) => {
     setParams(params);
   }
 
-  if (props.state.studentsList.length === 0) {
+  if (state.studentsList.length === 0) {
     return <div className="spinner"></div>;
   }
 
@@ -91,7 +87,7 @@ const Main = (props: IProps) => {
     <div className="main-screen">
       <h2>Students List</h2>
       <div className="stats">
-        <button onClick={() => props.dispatch({ type: "REMOVE_FIRST" })}>POP Student</button>
+        <button onClick={() => dispatch({ type: "REMOVE_FIRST" })}>POP Student</button>
         <button onClick={scrollToLast}>Scroll to Last</button>
         <b style={{ fontSize: '12px', fontWeight: 100, color: 'gray' }}>Total Absents {totalAbsents}</b>
       </div>
@@ -134,7 +130,6 @@ const Main = (props: IProps) => {
                     isGraduated={student.isGraduated}
                     coursesList={student.coursesList}
                     mode="list"
-                    dispatch={props.dispatch}
                   />
                 ))
               }

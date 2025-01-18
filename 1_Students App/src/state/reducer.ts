@@ -11,7 +11,7 @@ export type Action =
   | { type: "REMOVE_FIRST" }
   | { type: "UPDATE_ABSENTS"; payload: { id: string; change: number } };
 
-export const reducer = (state: State, action: Action): State => {
+export const stateReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "INIT": {
       const totalAbsents: number = action.payload.reduce(

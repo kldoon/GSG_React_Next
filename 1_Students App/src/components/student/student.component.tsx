@@ -3,11 +3,9 @@ import { IStudent } from '../../types';
 import CoursesList from '../courses-list/courses-list.component';
 import { Link } from 'react-router-dom';
 import Absents from '../absents/absents.component';
-import { Action } from '../../state/reducer';
 
 interface IProps extends IStudent {
   mode: 'details' | 'list';
-  dispatch: React.Dispatch<Action>;
 }
 
 const Student = (props: IProps) => {
