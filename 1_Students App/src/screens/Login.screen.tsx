@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../providers/authProvider';
 import { useNavigate } from 'react-router-dom';
+import { Role } from '../types';
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -28,9 +29,9 @@ const Login = () => {
         <div>
           <label htmlFor="role">Select Role: </label>
           <select name="role">
-            <option value="admin">Admin</option>
-            <option value="user">user</option>
-            <option value="guest">guest</option>
+            <option value={Role.ADMIN}>Admin</option>
+            <option value={Role.Teacher}>Teacher</option>
+            <option value={Role.GUEST}>Guest</option>
           </select>
         </div>
         <div>

@@ -13,13 +13,15 @@ const useLocalStorage = (state: any, storageKey: string) => {
         setStoredData(null);
       }
     } catch {
-      setStoredData(strData);
+      setStoredData(strData || null);
     }
   }, []);
 
   useEffect(() => {
     if (typeof (state) === 'object') {
       localStorage.setItem(storageKey, JSON.stringify(state));
+    } else if (state === null) {
+      localStorage.removeItem(storageKey);
     } else {
       localStorage.setItem(storageKey, state.toString());
     }

@@ -9,5 +9,11 @@ export interface IStudent {
 
 export interface IUserData {
   userName: string;
-  role: string;
+  role: Role;
+}
+
+export enum Role {
+  ADMIN = 'admin',
+  Teacher = 'teacher',
+  GUEST = 'guest'
 }

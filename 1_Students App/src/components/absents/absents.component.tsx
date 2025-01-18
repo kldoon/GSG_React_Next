@@ -52,7 +52,6 @@ const Absents = (props: IProps) => {
 
   return (
     <div className="absents">
-      <b style={{ color: absentColor }}>Prev Absents:</b> {prevAbsents.current}
       <b style={{ color: absentColor }}>Absents:</b> {absents}
       <button disabled={!user} onClick={addAbsent}>+</button>
       <button disabled={!user} onClick={removeAbsent}>-</button>

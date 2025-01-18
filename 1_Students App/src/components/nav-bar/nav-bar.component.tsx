@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './nav-bar.css';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../providers/authProvider';
+import { Role } from '../../types';
 
 const NavBar = () => {
   const location = useLocation();
@@ -16,7 +17,11 @@ const NavBar = () => {
     <nav>
       <span>
         <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home Page</Link>
-        <Link to='/add' className={location.pathname === '/add' ? 'active' : ''}>Add Student</Link>
+        {
+          user?.role === Role.ADMIN && (
+            <Link to='/add' className={location.pathname === '/add' ? 'active' : ''}>Add Student</Link>
+          )
+        }
         <Link to='/about' className={location.pathname === '/about' ? 'active' : ''}>About App</Link>
       </span>
       <span>

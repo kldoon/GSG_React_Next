@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { IUserData } from "../types";
+import useLocalStorage from "../hooks/local-storage.hook";
 
 export interface IAuthContext {
   user: IUserData | null;
@@ -11,6 +12,13 @@ export const AuthContext = createContext<IAuthContext>({ user: null, login: () =
 
 export const AuthProvider = (props: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUserData | null>(null);
+  const { storedData } = useLocalStorage(user, 'auth-user');
+
+  useEffect(() => {
+    if (storedData !== undefined) {
+      setUser(storedData);
+    }
+  }, [storedData])
 
   const login = (data: IUserData) => {
     if (data.userName.length >= 3) {
