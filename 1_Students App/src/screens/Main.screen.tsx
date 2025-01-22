@@ -8,11 +8,11 @@ import { StateContext } from "../providers/stateProvider";
 const COURSES_FILTERS = ['Math', 'HTML', 'CSS', 'OOP'];
 
 const Main = () => {
-  const { state, dispatch } = useContext(StateContext);
-
+  const { state, loading, dispatch } = useContext(StateContext);
   const { totalAbsents, studentsList } = state;
 
   const [filteredList, setFilteredList] = useState<IStudent[]>(studentsList);
+  const [filtering, setFiltering] = useState(true);
   const [params, setParams] = useSearchParams();
   const lastStdRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +23,8 @@ const Main = () => {
   }
 
   useEffect(() => {
+    setFiltering(true);
+
     const query = params.get('q') || '';
     const graduated = params.get('graduated');
     const courses = params.getAll('courses');
@@ -46,6 +48,7 @@ const Main = () => {
       // AND
       setFilteredList(oldState => (oldState.filter(std => courses.every(c => (std.coursesList.includes(c))))));
     }
+    setFiltering(false);
   }, [params, studentsList]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +82,7 @@ const Main = () => {
     setParams(params);
   }
 
-  if (state.studentsList.length === 0) {
+  if (loading || filtering) {
     return <div className="spinner"></div>;
   }
 

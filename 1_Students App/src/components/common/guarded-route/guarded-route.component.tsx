@@ -9,7 +9,11 @@ interface IProps {
 }
 
 const Guarded = (props: IProps) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return null;
+  }
 
   if (user === null) { // User is not logged in
     return (
