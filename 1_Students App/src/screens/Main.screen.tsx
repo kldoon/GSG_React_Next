@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import Student from "../components/student/student.component";
-import { IStudent } from "../types";
+import { IStudent } from "../@types";
 import { useSearchParams } from "react-router-dom";
 import React from "react";
 import { StateContext } from "../providers/stateProvider";

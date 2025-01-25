@@ -1,4 +1,4 @@
-import { IStudent } from "../types";
+import { IStudent } from "../@types";
 
 const validateStudent = (newStudent: IStudent) => {
   const errors: string[] = [];

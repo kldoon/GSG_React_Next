@@ -1,7 +1,7 @@
 import React, { createContext, useLayoutEffect, useReducer } from 'react'
 import { stateReducer, State, Action } from '../state/reducer';
 import useLocalStorage from '../hooks/local-storage.hook';
-import { IStudent } from '../types';
+import { IStudent } from '../@types';
 
 interface IProps {
   children: React.ReactNode;

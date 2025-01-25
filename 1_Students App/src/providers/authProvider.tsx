@@ -1,5 +1,5 @@
 import { createContext, useLayoutEffect, useState } from "react";
-import { IUserData } from "../types";
+import { IUserData } from "../@types";
 import useLocalStorage from "../hooks/local-storage.hook";
 
 export interface IAuthContext {

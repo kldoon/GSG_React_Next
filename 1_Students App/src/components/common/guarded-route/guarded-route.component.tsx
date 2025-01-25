@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../../providers/authProvider';
 import { Link } from 'react-router-dom';
-import { Role } from '../../../types';
+import { Role } from '../../../@types';
 
 interface IProps {
   children: React.ReactNode;

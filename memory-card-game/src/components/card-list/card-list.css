@@ -1,0 +1,21 @@
+.card-list {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 75vmin;
+}
+
+.card-list.level_2 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.card-list.level_4 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.card-list.level_6 {
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}

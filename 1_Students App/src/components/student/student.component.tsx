@@ -1,5 +1,5 @@
 import './student.css';
-import { IStudent } from '../../types';
+import { IStudent } from '../../@types';
 import CoursesList from '../courses-list/courses-list.component';
 import { Link } from 'react-router-dom';
 import Absents from '../absents/absents.component';

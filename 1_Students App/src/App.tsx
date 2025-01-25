@@ -4,7 +4,7 @@ import About from './screens/About.screen';
 import NotFound from './screens/NotFound.screen';
 import { Route, Routes } from 'react-router-dom';
 import StudentDetails from './screens/StudentDetails.screen';
-import { Role } from './types';
+import { Role } from './@types';
 import AddStudent from './screens/AddStudent.screen';
 import Login from './screens/Login.screen';
 import NavBar from './components/nav-bar/nav-bar.component';

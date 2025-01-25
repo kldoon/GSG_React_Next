@@ -1,6 +1,6 @@
 import './add-form.css';
 import { useEffect, useState } from 'react';
-import { IStudent } from '../../types';
+import { IStudent } from '../../@types.ts';
 import CoursesListForm from '../courses-list-form/courses-list-form.component';
 import { validateStudent } from '../../utils/validation.ts';
 import { useNavigate } from 'react-router-dom';

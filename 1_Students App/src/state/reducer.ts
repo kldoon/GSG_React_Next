@@ -1,4 +1,4 @@
-import { IStudent } from "../types";
+import { IStudent } from "../@types";
 
 export type State = {
   studentsList: IStudent[];

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import { IStudent } from '../../types';
+import { IStudent } from '../../@types';
 import { AuthContext } from '../../providers/authProvider';
 import { StateContext } from '../../providers/stateProvider';
 

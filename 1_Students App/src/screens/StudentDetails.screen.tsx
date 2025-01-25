@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import Student from '../components/student/student.component'
-import { IStudent } from '../types';
+import { IStudent } from '../@types';
 import { useEffect, useState } from 'react';
 
 const StudentDetails = () => {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import './nav-bar.css';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../providers/authProvider';
-import { Role } from '../../types';
+import { Role } from '../../@types';
 
 const NavBar = () => {
   const location = useLocation();

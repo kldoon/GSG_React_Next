@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../providers/authProvider';
 import { useNavigate } from 'react-router-dom';
-import { Role } from '../types';
+import { Role } from '../@types';
 
 const Login = () => {
   const { login } = useContext(AuthContext);
