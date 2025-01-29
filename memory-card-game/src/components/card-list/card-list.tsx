@@ -12,7 +12,7 @@ interface IProps {
 
 const CardList = (props: IProps) => {
   const { gameMode } = useContext(GameModeContext);
-
+  
   return (
     <div className={`card-list level_${gameMode.level}`}>
       {

@@ -1,4 +1,4 @@
-.card {
+/* .card {
   aspect-ratio: 1;
   border: 1px solid gray;
   border-radius: 5px;
@@ -6,8 +6,53 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+} */
+
+.card {
+  aspect-ratio: 1;
+  border-radius: 5px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
 }
 
 .card:hover {
   border-width: 3px;
+}
+
+.card-front {
+  background-color: white;
+  background-image: url(https://api.clipart.com/img/previews/icon-set-98.png);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background-color: white;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 3px solid gray;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease-in-out;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 6px;
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center;
 }

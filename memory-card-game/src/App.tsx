@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
 import './App.css'
-import LoginScreen from './screens/login.screen';
 import GameScreen from './screens/game.screen';
 import LevelsScreen from './screens/levels.screen';
 import ScoreBoardScreen from './screens/score-board.screen';
@@ -11,15 +10,11 @@ function App() {
   const routes: RouteObject[] = [
     {
       path: '/',
-      element: <LoginScreen />,
+      element: <LevelsScreen />
     },
     {
       path: '/game',
       element: <GameScreen />
-    },
-    {
-      path: '/levels',
-      element: <LevelsScreen />
     },
     {
       path: '/score-board',

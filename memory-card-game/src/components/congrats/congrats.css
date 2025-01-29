@@ -1,0 +1,15 @@
+.congrats {
+    display: flex;
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 5;
+    color: #fff34b;
+    background-color: rgba(122, 122, 122, 0.788);
+    font-size: 40px;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 30px;
+    max-width: 50vw;
+}

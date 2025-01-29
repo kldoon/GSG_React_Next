@@ -8,4 +8,5 @@ export interface ICard {
   id: number;
   image: string;
   visible: boolean;
+  revealed: boolean;
 }

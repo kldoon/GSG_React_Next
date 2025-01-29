@@ -1,7 +1,7 @@
 import { ELevels, ICard } from "../types/@types";
 
 const EMPTY_CARD: ICard = {
-  id: 0, image: '', visible: false
+  id: 0, image: '', visible: false, revealed: false
 }
 
 export const createGameBoard = (level: ELevels): ICard[] => {
@@ -12,4 +12,8 @@ export const createGameBoard = (level: ELevels): ICard[] => {
   // fill cards images
   cards = cards.map(c => ({ ...c, image: `https://api.clipart.com/img/previews/education-${c.id + 1}.jpg` }));
   return cards;
-} 
+}
+
+export const checkedFinished = (cards: ICard[]) => {
+  return cards.every(c => c.revealed);
+}

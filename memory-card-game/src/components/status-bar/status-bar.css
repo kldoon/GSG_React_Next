@@ -1,0 +1,10 @@
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(207, 207, 207);
+  width: 75vmin;
+  padding: 20px;
+}
