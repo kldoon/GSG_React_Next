@@ -1,0 +1,13 @@
+- Login Screen
+- Levels Screen
+   - Level Component
+   - Tutorial Component
+- Game Screen
+   - Card Component
+   - Cards List Component
+   - Status Component (name, level, score, elapsed time, moves, retry)
+- Score Board
+   - Score List Component 
+   - Score Item Component
+   - Top 3 Component
+  
