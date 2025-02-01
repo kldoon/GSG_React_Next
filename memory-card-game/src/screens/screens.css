@@ -11,6 +11,14 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+.screen.levels-screen .player input {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #aaa;
+}
+
 .screen.levels-screen .levels {
   display: flex;
   width: 60vmin;

@@ -10,3 +10,10 @@ export interface ICard {
   visible: boolean;
   revealed: boolean;
 }
+
+export interface IScore {
+  playerName: string;
+  finishTime: number;
+  wrongMoves: number;
+  level: ELevels;
+}
