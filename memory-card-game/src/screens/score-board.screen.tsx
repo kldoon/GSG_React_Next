@@ -31,7 +31,9 @@ const ScoreBoardScreen = () => {
   }, []);
 
   const handleClearAll = () => {
-    localStorage.removeItem('flip-cards-scores');
+    if (confirm('Sure?')) {
+      localStorage.removeItem('flip-cards-scores');
+    }
   }
 
   return (

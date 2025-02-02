@@ -1,0 +1,11 @@
+ul.score-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+ul.score-list li {
+  display: flex;
+  justify-content: space-between;
+}

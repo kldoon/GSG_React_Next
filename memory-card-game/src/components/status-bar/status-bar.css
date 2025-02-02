@@ -4,7 +4,9 @@
   font-size: 25px;
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
-  background-color: rgb(207, 207, 207);
+  background: linear-gradient(360deg, #d9d9d9, #d8d7ffb0);
   width: 75vmin;
-  padding: 20px;
+  padding: 23px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 1px 0px #c6c6c6;
 }

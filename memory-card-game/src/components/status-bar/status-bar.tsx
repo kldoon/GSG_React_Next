@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import './status-bar.css';
 import { useContext } from 'react';

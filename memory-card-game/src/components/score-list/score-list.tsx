@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IScore } from "../../types/@types"
+import { IScore } from '../../types/@types';
+import './score-list.css';
 
 interface IProps {
   scores: IScore[];
 }
 const ScoreList = (props: IProps) => {
   return (
-    <ul>
+    <ul className="score-list">
       {
         props.scores.map((score, index) => (
           <li key={score.playerName + index}>

@@ -4,12 +4,23 @@
     font-family: 'Courier New', Courier, monospace;
     z-index: 5;
     color: #fff34b;
-    background-color: rgba(122, 122, 122, 0.788);
-    font-size: 40px;
+    background-color: rgb(5 19 40);
+    font-size: 22px;
     align-content: center;
     align-items: center;
     flex-direction: column;
     row-gap: 30px;
-    padding: 30px;
-    max-width: 50vw;
+    padding: 70px;
+    max-width: 75vw;
+
+    color: #fff;
+    text-shadow: 0 0 7px #000000,
+        0 0 10px #8c4a4a,
+        0 0 21px #a8a7de,
+        0 0 42px #bc13fe,
+        0 0 82px #bc13fe,
+        0 0 92px #bc13fe,
+        0 0 102px #bc13fe,
+        0 0 151px #bc13fe;
+    box-shadow: 0px 0px 18px 7px #1c2866;
 }
