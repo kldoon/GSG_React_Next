@@ -52,7 +52,11 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 6px;
-  background-size: 65%;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.card-front{
+  background-size: 60%;
 }

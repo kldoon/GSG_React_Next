@@ -18,6 +18,11 @@ const useGameLogic = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!gameMode.playerName) {
+      navigate('/');
+      return;
+    }
+
     if (!state.initialized) {
       dispatch({ type: 'init', payload: { level: gameMode.level } });
       resetGame();
@@ -45,8 +50,7 @@ const useGameLogic = () => {
     if (isFinished) {
       setGameMode(old => ({ ...old, finished: true }));
       clearInterval(timerRef.current);
-      console.log(gameMode.playerName);
-      
+
       const score: IScore = {
         finishTime: gameMode.time,
         level: gameMode.level,

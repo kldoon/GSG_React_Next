@@ -1,3 +1,7 @@
+*{
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .screen.game-screen {
   display: flex;
   justify-content: center;
@@ -5,10 +9,6 @@
   flex-direction: column;
   row-gap: 20px;
   margin: 0 auto;
-}
-
-.screen.levels-screen {
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .screen.levels-screen .player input {

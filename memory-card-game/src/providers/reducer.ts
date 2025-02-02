@@ -3,7 +3,7 @@ import { createGameBoard } from "../utils/game.util";
 
 export interface IGameState {
   initialized: boolean;
-  cards: ICard[];  
+  cards: ICard[];
   openCards: number[];
 }
 
@@ -20,7 +20,10 @@ export const gameReducer = (state: IGameState, action: Action): IGameState => {
     }
 
     case 'flip-card': {
-      if (state.openCards.includes(action.payload.index) || state.openCards.length === 2) {
+      if (state.openCards.includes(action.payload.index) ||
+        state.openCards.length === 2 ||
+        state.cards[action.payload.index].revealed
+        || state.cards[action.payload.index].visible) {
         return state;
       }
 

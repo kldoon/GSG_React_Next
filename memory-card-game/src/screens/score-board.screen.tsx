@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { IScore } from '../types/@types';
 import ScoreList from '../components/score-list/score-list';
+import { Link } from 'react-router-dom';
 
 const getScores = () => {
   const scores: IScore[] = JSON.parse(localStorage.getItem('flip-cards-scores') || '[]');
@@ -29,19 +30,32 @@ const ScoreBoardScreen = () => {
     setTopPlayers(tp);
   }, []);
 
+  const handleClearAll = () => {
+    localStorage.removeItem('flip-cards-scores');
+  }
+
   return (
     <div className="screen score-screen">
       <h1>Score Board</h1>
-      <div className="boards">
-        <div>
-          <h2>All Games</h2>
-          <ScoreList scores={savedScores} />
-        </div>
-        <div>
-          <h2>Top 3 Games</h2>
-          <ScoreList scores={topPlayers} />
-        </div>
-      </div>
+      <nav><Link to="/">New Game</Link></nav>
+      <br /><br />
+      <button onClick={handleClearAll}>Clear all Scores</button>
+      {
+        !savedScores.length
+          ? <h2>No Scores Found!</h2>
+          : (
+            <div className="boards">
+              <div>
+                <h2>All Games</h2>
+                <ScoreList scores={savedScores} />
+              </div>
+              <div>
+                <h2>Top 3 Games</h2>
+                <ScoreList scores={topPlayers} />
+              </div>
+            </div>
+          )
+      }
 
     </div>
   )

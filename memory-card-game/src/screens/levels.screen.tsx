@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { GameModeContext } from "../providers/modeProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ELevels } from "../types/@types";
 
 const LevelsScreen = () => {
@@ -25,6 +25,8 @@ const LevelsScreen = () => {
   return (
     <div className="screen levels-screen">
       <h1>Flip Card Game </h1>
+      <nav><Link to="/score-board">Score Board</Link></nav>
+      <br/><br/>
       <div className="player">
         <h3>Please enter your name</h3>
         <input type="text" width={60} onChange={handleChangeName} />

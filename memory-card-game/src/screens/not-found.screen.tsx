@@ -1,8 +1,6 @@
-import React from 'react'
-
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div>The page you requested doesn't exists</div>
   )
 }
 
