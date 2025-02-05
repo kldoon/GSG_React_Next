@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.wrapper>aside {
+  flex-basis: 20vw;
+  background-color: #ccc;
+  min-height: 70vh;
+  padding-top: 30px;
+  padding-left: 10px;
+}
+
+.wrapper>main {
+  flex-basis: 80vw;
+  min-height: 70vh;
+  border: 1px solid gray;
+}

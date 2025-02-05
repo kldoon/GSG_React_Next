@@ -5,11 +5,16 @@ const Home = () => {
   return (
     <div className={styles.page}>
       <h1>Hello Next JS</h1>
-      <nav>
-        <Link href="/about">About US</Link>
-        <Link href="/contact">Contact US</Link>
-      </nav>
       <p>This is is the first next js app</p>
+      <div className="mt-1">
+        <h2>Latest News</h2>
+        <ul>
+          <li>
+            <Link href="/news/gaza">Gaza News</Link>
+            <Link href="/news/westbank">Westbank News</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,15 +1,18 @@
 import React from 'react'
 
 interface IProps {
-  params: { postId: string }
+  params: Promise<{ postId: string }>
 }
 
 const Post = async (props: IProps) => {
-  const { postId } = props.params;
+  const { postId } = await props.params;
 
   return (
     <div>
-      {postId}<br />
+      <h2>
+        {postId}
+      </h2>
+      <br />
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo amet necessitatibus laudantium voluptatum explicabo reiciendis hic cum. Quo ab vel, vitae odio ad ipsam nesciunt ut optio voluptatibus, enim quod.
       Vel repudiandae provident quasi molestias, reiciendis consequuntur, vero at debitis molestiae alias commodi aut iure dicta quos vitae tempore laboriosam tempora facilis voluptatibus, voluptatem dignissimos tenetur error sapiente ex! Ullam!
       Sint aut delectus aliquid dolore accusamus unde quisquam, dignissimos voluptatem, exercitationem, quia atque totam neque. Quisquam beatae voluptates, recusandae possimus cumque sunt repudiandae alias excepturi animi amet magnam itaque vero?
