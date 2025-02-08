@@ -1,0 +1,33 @@
+ .hero {
+   width: 100%;
+   height: 350px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   row-gap: 30px;
+ }
+
+ .hero h2 {
+   font-family: Roboto;
+   font-size: 64px;
+   line-height: 84px;
+   font-weight: 700;
+   color: #171A1FFF;
+   display: flex;
+   justify-content: center;
+   margin: 0;
+ }
+
+ .hero span {
+   font-family: Mulish;
+   font-size: 20px;
+   line-height: 30px;
+   font-weight: 400;
+   color: #1D2128FF;
+ }
+
+ .hero .actions {
+   display: flex;
+   column-gap: 30px;
+ }
