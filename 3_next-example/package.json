@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.6.1",
+    "@ant-design/nextjs-registry": "^1.0.2",
     "@tailwindcss/postcss": "^4.0.3",
+    "antd": "^5.23.4",
     "next": "15.1.6",
     "postcss": "^8.5.1",
     "react": "^19.0.0",
