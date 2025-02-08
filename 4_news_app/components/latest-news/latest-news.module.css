@@ -22,13 +22,19 @@
   flex-wrap: wrap;
 }
 
-.items .newsItem {
+.newsItem {
   display: flex;
   align-items: stretch;
   background: #FFFFFFFF;
   flex-basis: 25%;
   border-radius: 2px;
-  box-shadow: 0px 0px 1px #171a1f5a, 0px 0px 2px #171a1f1F
+  box-shadow: 0px 0px 1px #171a1f5a, 0px 0px 2px #171a1f1F;
+  transition: transform 0.1s linear;
+}
+
+.newsItem.highlighted {
+  transform: scale(1.1);
+  box-shadow: 0 0 5 5 #dcdcdc;
 }
 
 .newsItem .info {
