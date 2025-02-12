@@ -1,0 +1,9 @@
+.wrapper {
+    margin-top: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .category {
+    flex-basis: 33%;
+}
