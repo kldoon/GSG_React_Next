@@ -45,6 +45,12 @@
   row-gap: 10px;
 }
 
+.newsItem .info :global(.button.outline) {
+  padding: 0 5px;
+  font-size: 12px;
+  border-width: 1px;
+}
+
 .newsItem .info h3 {
   margin: 0;
   padding: 0;
