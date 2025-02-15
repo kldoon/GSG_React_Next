@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import { Roboto, Mulish } from 'next/font/google';
+import classNames from "classnames";
 
 const robotoFont = Roboto({
   weight: ['400', '700'],
@@ -21,13 +22,6 @@ const mulishFont = Mulish({
   variable: '--font-mulish'
 });
 
-const rootFonts = `
-  :root {
-    --font-roboto: ${robotoFont.style.fontFamily};
-    --font-mulish: ${mulishFont.style.fontFamily};
-  }
-`;
-
 export const metadata: Metadata = {
   title: "GSG News",
   description: "GSG News, get latest news around the world"
@@ -39,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // We used the .variable as class name (not .className) to pass the css variable :) 
+    <html lang="en" className={classNames(mulishFont.variable, robotoFont.variable)}>
       <body>
-        <style>{rootFonts}</style>
         <Header />
         {children}
       </body>

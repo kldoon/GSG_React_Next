@@ -14,9 +14,10 @@ const Page = () => {
       `https://newsdata.io/api/1/latest?apikey=${api_key}&category=${category}&country=${country}`,
       { method: 'GET' }
     )
-      .then(res => res.json())
+      // as tells the editor that the response you are getting from json() is a News.IResponse
+      .then(res => res.json() as Promise<News.IResponse>)
       .then(res => {
-        const newsList: News.Item[] = res.results.map((item: News.IResponseNewsItem) => (
+        const newsList: News.Item[] = res.results.map(item => (
           {
             id: item.article_id,
             title: item.title,
@@ -41,7 +42,13 @@ const Page = () => {
             <div key={item.id}>
               <h3>{item.title}</h3>
               {
-                item.img !== null && <Image src={item.img} alt="new-img" width={550} height={150} />
+                item.img !== null && <Image
+                  src={item.img}
+                  alt="new-img"
+                  width={650}
+                  height={150}
+                  style={{ objectFit: 'cover' }}
+                />
               }
               <p>{item.content}</p>
             </div>

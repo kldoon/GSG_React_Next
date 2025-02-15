@@ -9,7 +9,7 @@ declare namespace News {
   export interface IResponse {
     status: string;
     totalResults: string;
-    results: string[];
+    results: IResponseNewsItem[];
   }
 
   export interface Item {
