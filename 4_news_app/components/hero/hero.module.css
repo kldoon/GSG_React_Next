@@ -9,7 +9,7 @@
  }
 
  .hero h2 {
-   font-family: Roboto;
+   font-family: var(--font-roboto);
    font-size: 64px;
    line-height: 84px;
    font-weight: 700;
@@ -20,7 +20,7 @@
  }
 
  .hero span {
-   font-family: Mulish;
+   font-family: var(--font-mulish);
    font-size: 20px;
    line-height: 30px;
    font-weight: 400;

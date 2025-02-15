@@ -25,7 +25,7 @@
 }
 
 .header .logo h1 {
-  font-family: Roboto;
+  font-family: var(--font-roboto);
   font-size: 28px;
   line-height: 42px;
   font-weight: 700;
@@ -35,7 +35,7 @@
 .header nav {
   display: flex;
   align-items: center;
-  font-family: Mulish;
+  font-family: var(--font-mulish);
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;

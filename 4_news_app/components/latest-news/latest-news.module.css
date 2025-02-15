@@ -8,7 +8,7 @@
 }
 
 .latestNews h2 {
-  font-family: Roboto;
+  font-family: var(--font-roboto);
   font-size: 24px;
   line-height: 36px;
   font-weight: 700;
@@ -55,7 +55,7 @@
   margin: 0;
   padding: 0;
   height: 30px;
-  font-family: Roboto;
+  font-family: var(--font-roboto);
   font-size: 16px;
   line-height: 30px;
   font-weight: 700;
@@ -63,7 +63,7 @@
 }
 
 .newsItem .info p {
-  font-family: Mulish;
+  font-family: var(--font-mulish);
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
