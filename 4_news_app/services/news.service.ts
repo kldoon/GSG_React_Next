@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 const api_key = 'pub_69675b359f778a6ecbb631d39cbd30af4c4f7';
 
 const fetchNews = async (category: string, country: string) => {
@@ -7,20 +9,26 @@ const fetchNews = async (category: string, country: string) => {
   );
 
   const newsRes = (await res.json()) as News.IResponse;
-  const latestNews: News.Item[] = newsRes.results.map(item => (
-    {
-      id: item.article_id,
-      title: item.title,
-      img: item.image_url,
-      content: item.description
-    }
-  ));
+  let latestNews: News.Item[] = [];
+  if (newsRes.status === 'success') {
+    latestNews = newsRes.results.map(item => (
+      {
+        id: item.article_id,
+        title: item.title,
+        img: item.image_url,
+        content: item.description
+      }
+    ));
+  } else {
+    // triggering notFound manually
+    notFound();
+  }
 
   // return latestNews;
   // The goal of the promise below is to make the response slower (just to demo loading status) 
   return new Promise((resolve) => setTimeout(() => {
     resolve(latestNews);
-  }, 5000));
+  }, 2000));
 }
 
 export {
