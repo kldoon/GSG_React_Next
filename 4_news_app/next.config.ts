@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [  // This will allow all external hosts/domains
       {
-        protocol: "https",
         hostname: "**",
       },
     ],
