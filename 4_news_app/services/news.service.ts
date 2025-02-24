@@ -23,8 +23,9 @@ const fetchNews = async (category: string, country: string) => {
     // triggering notFound manually
     notFound();
   }
-  
-  // return latestNews;
+
+  throw new Error("Something went wrong while fetching the News from server [xa2658]");
+
   // The goal of the promise below is to make the response slower (just to demo loading status) 
   return new Promise((resolve) => setTimeout(() => {
     resolve(latestNews);
