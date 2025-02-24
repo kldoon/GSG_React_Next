@@ -1,0 +1,12 @@
+.layout {
+  display: flex;
+  align-items: stretch;
+  column-gap: 30px;
+}
+
+.sideBar {
+  min-height: 100vh;
+  flex-basis: 25%;
+  flex-shrink: 0;
+  box-shadow: 0px 0px 1px #171a1f1F, 0px 0px 2px #171a1f1F;
+}

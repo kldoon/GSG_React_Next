@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import classes from './layout.module.css';
 
 export default function NewsLayout({
   children,
@@ -6,8 +7,8 @@ export default function NewsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div style={{ display: 'flex', alignItems: 'stretch' }}>
-      <div style={{ border: '2px solid blue', minHeight: '70vh', flexBasis: '25%' }}>
+    <div className={classes.layout}>
+      <div className={classes.sideBar}>
         side bar
       </div>
       <div>
