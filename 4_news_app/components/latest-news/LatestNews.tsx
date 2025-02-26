@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react';
 import classes from './latest-news.module.css';
 import Item from './item/Item';
 
-const LatestNews = () => {
+interface IProps {
+  newsList: News.Item[];
+}
+
+const LatestNews = (props: IProps) => {
   const [highlightedIndex, setHighlightedIndex] = useState(0);
 
   useEffect(() => {
@@ -21,7 +25,13 @@ const LatestNews = () => {
       <h2>Latest News Articles</h2>
       <div className={classes.items}>
         {
-          [0, 1, 2].map(item => <Item key={item} isHighlighted={item === highlightedIndex} />)
+          props.newsList.map((data, index) => (
+            <Item
+              key={data.id}
+              data={data}
+              isHighlighted={index === highlightedIndex}
+            />
+          ))
         }
       </div>
     </div>

@@ -7,8 +7,6 @@ interface IProps {
 }
 
 const Category = (props: IProps) => {
-  console.log(props);
-  
   return (
     <div className={classes.wrapper}>
       <div className={classes.banner}>

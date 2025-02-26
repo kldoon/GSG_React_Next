@@ -27,17 +27,21 @@ export const metadata: Metadata = {
   description: "GSG News, get latest news around the world"
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface IProps {
   children: React.ReactNode;
-}>) {
+  latestgb: React.ReactNode;
+  latestus: React.ReactNode;
+}
+
+export default function RootLayout({ children, latestgb, latestus }: IProps) {
   return (
     // We used the .variable as class name (not .className) to pass the css variable :) 
     <html lang="en" className={classNames(mulishFont.variable, robotoFont.variable)}>
       <body>
         <Header />
         {children}
+        <section>{latestgb}</section>
+        <section>{latestus}</section>
       </body>
     </html>
   );

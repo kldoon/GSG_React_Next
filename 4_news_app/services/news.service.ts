@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-const api_key = 'pub_69675b359f778a6ecbb631d39cbd30af4c4f7';
+const api_key = 'pub_701076cdd4cdeaa56df41b17fae04f1ce8350';
 
 const fetchNews = async (category: string, country: string) => {
   const res = await fetch(
@@ -21,7 +21,7 @@ const fetchNews = async (category: string, country: string) => {
     ));
   } else {
     // triggering notFound manually
-    notFound();
+    // notFound();
   }
 
   // throw new Error("Something went wrong while fetching the News from server [xa2658]");
