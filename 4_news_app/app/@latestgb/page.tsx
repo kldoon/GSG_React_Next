@@ -10,7 +10,10 @@ const Page = async () => {
 
   return (
     <div>
-      <LatestNews newsList={latestNews.slice(0, 3)} />
+      <LatestNews
+        subTitle="Great Britain Politics"
+        newsList={latestNews.slice(0, 3)}
+      />
     </div>
   )
 }

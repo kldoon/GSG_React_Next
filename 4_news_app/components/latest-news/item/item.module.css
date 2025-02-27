@@ -1,0 +1,20 @@
+.newsItem {
+    flex: 0 0 23%;
+    align-items: stretch;
+    padding: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px #ddd, 0px 0px 5px #eee;
+    transition: transform 0.1s linear;
+    background: #fff;
+}
+
+.newsItem.highlighted {
+    transform: scale(1.1);
+    box-shadow: 0 0 5 5 #dcdcdc;
+}
+
+.newsItem .info .button {
+    padding: 0px 10px;
+    font-size: 12px;
+}

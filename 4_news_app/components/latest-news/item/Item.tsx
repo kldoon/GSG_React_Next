@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from '../latest-news.module.css';
+import classes from './item.module.css';
 import Image from 'next/image';
 
 interface IProps {
@@ -9,16 +9,17 @@ interface IProps {
 
 const Item = (props: IProps) => {
   const item = props.data;
+
   return (
-    <div key={item.id} style={{ flex: '0 0 23%', padding: '10px', cursor: 'pointer', boxSizing: 'border-box', boxShadow: '0px 0px 4px #ddd, 0px 0px 5px #eee' }}>
-      <h3 style={{ fontSize: '15px', margin: '0', height: '75px' }}>{item.title?.substring(0, 95)}</h3>
-      <div style={{ width: '100%', height: '150px', position: 'relative' }}>
+    <div className={`${classes.newsItem} ${props.isHighlighted ? classes.highlighted : ''}`}>
+      <h3 style={{ fontSize: '15px', margin: '0', marginBottom: '10px', maxHeight: '75px' }}>{item.title?.substring(0, 95)}</h3>
+      <div style={{ position: 'relative', width: '100%', height: '150px', background: 'red' }}>
         {
           <Image
             src={item.img || '/cat1.png'}
             alt="new-img"
-            fill
             style={{ objectFit: 'cover' }}
+            fill
           />
         }
       </div>
@@ -27,4 +28,4 @@ const Item = (props: IProps) => {
   )
 }
 
-export default Item
+export default Item;

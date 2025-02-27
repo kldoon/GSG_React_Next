@@ -4,6 +4,7 @@ import classes from './latest-news.module.css';
 import Item from './item/Item';
 
 interface IProps {
+  subTitle?: string;
   newsList: News.Item[];
 }
 
@@ -23,6 +24,7 @@ const LatestNews = (props: IProps) => {
   return (
     <div className={classes.latestNews}>
       <h2>Latest News Articles</h2>
+      {props.subTitle && <h3>{props.subTitle}</h3>}
       <div className={classes.items}>
         {
           props.newsList.map((data, index) => (
@@ -38,4 +40,4 @@ const LatestNews = (props: IProps) => {
   )
 }
 
-export default LatestNews
+export default LatestNews;
