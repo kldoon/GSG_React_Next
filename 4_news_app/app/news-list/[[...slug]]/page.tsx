@@ -18,13 +18,13 @@ const NewsListPage = async (props: IProps) => {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [category, country, _year] = slug;
+  const [category, _year] = slug;
 
   return (
-    <div>
-      <h1 className={classes.header}>{country} {category} News</h1>
+    <div style={{ width: '100%' }}>
+      <h1 className={classes.header}>{category} News</h1>
       <Suspense fallback={<div className={classes.spinner} />}>
-        <NewsList category={category} country={country} />
+        <NewsList category={category} />
       </Suspense>
     </div>
   )

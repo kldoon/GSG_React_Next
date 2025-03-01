@@ -11,9 +11,7 @@ export default function NewsLayout({
       <div className={classes.sideBar}>
         side bar
       </div>
-      <div>
-        {children}
-      </div>
+      {children}
     </div>
   );
 }

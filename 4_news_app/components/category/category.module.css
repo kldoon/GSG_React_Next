@@ -11,6 +11,10 @@
   padding-bottom: 10px;
 }
 
+.wrapper a {
+  text-decoration: none;
+}
+
 .title {
   font-family: var(--font-mulish);
   font-size: 18px;
