@@ -1,9 +1,13 @@
 import sql from 'better-sqlite3';
 const db = sql('news.db');
 
-const getNews = (category: string): News.Item_[] => {
+const getNewsByCategory = (category: string): News.Item_[] => {
   const results = db.prepare('SELECT * FROM articles WHERE category = ?').all(category);
   return results as News.Item_[];
+}
+
+const getNewsArticle = (slug: string): News.Item_ => {
+  return db.prepare('SELECT * FROM articles WHERE slug = ?').get(slug) as News.Item_;
 }
 
 const api_key = 'pub_701076cdd4cdeaa56df41b17fae04f1ce8350';
@@ -43,5 +47,6 @@ const fetchNews = async (category: string, country: string) => {
 
 export {
   fetchNews,
-  getNews
+  getNewsByCategory,
+  getNewsArticle
 }

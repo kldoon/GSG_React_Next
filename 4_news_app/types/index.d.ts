@@ -29,7 +29,7 @@ declare namespace News {
     id: string;
     title: string;
     slug: string;
-    image: string | null;
+    image: string;
     summary: string;
     content: string;
     author: string;

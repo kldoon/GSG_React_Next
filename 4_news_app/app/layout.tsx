@@ -40,8 +40,8 @@ export default function RootLayout({ children, latestgb, latestus }: IProps) {
       <body>
         <Header />
         {children}
-        <section>{latestgb}</section>
-        <section>{latestus}</section>
+        {/* <section>{latestgb}</section>
+        <section>{latestus}</section> */}
       </body>
     </html>
   );
