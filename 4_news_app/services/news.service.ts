@@ -1,5 +1,3 @@
-import { notFound } from "next/navigation";
-
 const api_key = 'pub_701076cdd4cdeaa56df41b17fae04f1ce8350';
 
 const fetchNews = async (category: string, country: string) => {
