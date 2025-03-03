@@ -1,0 +1,127 @@
+.newsFormContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formTitle {
+  color: #71b2ab;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #a3d0ca;
+  padding-bottom: 0.5rem;
+}
+
+.formDescription {
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+.newsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  font-weight: 500;
+  color: #333333;
+  font-size: 0.95rem;
+}
+
+.formInput,
+.formTextarea,
+.formSelect {
+  padding: 0.75rem;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: #71b2ab;
+  box-shadow: 0 0 0 2px rgba(113, 178, 171, 0.2);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.formSelect {
+  background-color: white;
+  cursor: pointer;
+}
+
+.formSelect option {
+  padding: 0.5rem;
+}
+
+.formHidden {
+  display: none;
+}
+
+.submitButton {
+  background-color: #71b2ab;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.submitButton:hover {
+  background-color: #5a8f89;
+}
+
+.submitButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(113, 178, 171, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .newsFormContainer {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .formTitle {
+    font-size: 1.75rem;
+  }
+}
+
+/* Optional: Add some animation for form elements */
+.formInput,
+.formTextarea,
+.formSelect {
+  transform: translateY(0);
+  transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  transform: translateY(-2px);
+}
+

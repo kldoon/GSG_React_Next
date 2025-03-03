@@ -26,7 +26,7 @@ declare namespace News {
   }
 
   export interface Item_ {
-    id: string;
+    id?: string;
     title: string;
     slug: string;
     image: string;

@@ -19,7 +19,8 @@ const dummyArticles = [
     `,
     author: 'Sarah Miller',
     author_email: 'sarahmiller@example.com',
-    date: 1740787200000  // March 1, 2025 00:00:00 UTC
+    date: 1740787200000, // March 1, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 2,
@@ -33,7 +34,8 @@ const dummyArticles = [
     `,
     author: 'Tom Wilson',
     author_email: 'tomwilson@example.com',
-    date: 1740700800000  // Feb 28, 2025 00:00:00 UTC
+    date: 1740700800000, // Feb 28, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 3,
@@ -47,7 +49,8 @@ const dummyArticles = [
     `,
     author: 'Lisa Chen',
     author_email: 'lisachen@example.com',
-    date: 1740787200000  // March 1, 2025 00:00:00 UTC
+    date: 1740787200000, // March 1, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 4,
@@ -61,7 +64,8 @@ const dummyArticles = [
     `,
     author: 'Dr. Emily Rogers',
     author_email: 'emilyrogers@example.com',
-    date: 1740614400000  // Feb 27, 2025 00:00:00 UTC
+    date: 1740614400000, // Feb 27, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 5,
@@ -75,7 +79,8 @@ const dummyArticles = [
     `,
     author: 'Mike Johnson',
     author_email: 'mikejohnson@example.com',
-    date: 1740528000000  // Feb 26, 2025 00:00:00 UTC
+    date: 1740528000000, // Feb 26, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 6,
@@ -89,7 +94,8 @@ const dummyArticles = [
     `,
     author: 'Clara Evans',
     author_email: 'claraevans@example.com',
-    date: 1740873600000  // March 2, 2025 00:00:00 UTC
+    date: 1740873600000, // March 2, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 7,
@@ -103,7 +109,8 @@ const dummyArticles = [
     `,
     author: 'Robert Lee',
     author_email: 'robertlee@example.com',
-    date: 1740700800000  // Feb 28, 2025 00:00:00 UTC
+    date: 1740700800000, // Feb 28, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 8,
@@ -117,7 +124,8 @@ const dummyArticles = [
     `,
     author: 'Anna Patel',
     author_email: 'annapatel@example.com',
-    date: 1740960000000  // March 3, 2025 00:00:00 UTC
+    date: 1740960000000, // March 3, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 9,
@@ -131,7 +139,8 @@ const dummyArticles = [
     `,
     author: 'David Kim',
     author_email: 'davidkim@example.com',
-    date: 1740614400000  // Feb 27, 2025 00:00:00 UTC
+    date: 1740614400000, // Feb 27, 2025 00:00:00 UTC
+    category: 'global'
   },
   {
     id: 10,
@@ -145,7 +154,8 @@ const dummyArticles = [
     `,
     author: 'Sophie Brown',
     author_email: 'sophiebrown@example.com',
-    date: 1740873600000  // March 2, 2025 00:00:00 UTC
+    date: 1740873600000, // March 2, 2025 00:00:00 UTC
+    category: 'global'
   },
 ];
 
@@ -160,6 +170,7 @@ db.prepare(`
     author TEXT NOT NULL,
     author_email TEXT NOT NULL,
     date INTEGER NOT NULL
+    category TEXT NOT NULL
   ) `).run();
 
 const insertData = () => {
@@ -174,6 +185,7 @@ const insertData = () => {
       @author,
       @author_email,
       @date
+      @category
     )`);
 
   for (const article of dummyArticles) {
