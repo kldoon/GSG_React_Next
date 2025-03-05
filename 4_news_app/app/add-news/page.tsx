@@ -1,23 +1,8 @@
-import React from 'react'
-import classes from './add-news.module.css';
+import React from 'react';
+import classes from './add-article.module.css';
+import { addArticle } from '@/controllers/news-actions';
 
 const Page = () => {
-  const addArticle = async (formData: FormData) => {
-    'use server';
-
-    const newArticle: News.Item_ = {
-      title: formData.get('title')?.toString() || '',
-      image: formData.get('image')?.toString() || '',
-      summary: formData.get('summary')?.toString() || '',
-      content: formData.get('content')?.toString() || '',
-      date: new Date(formData.get('date')?.toString() || '').getTime() / 1000,
-      author: formData.get('author')?.toString() || '',
-      author_email: formData.get('author_email')?.toString() || '',
-      slug: ''
-    };
-
-    console.log(newArticle);
-  }
 
   return (
     <div className={classes.newsFormContainer}>

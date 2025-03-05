@@ -35,5 +35,6 @@ declare namespace News {
     author: string;
     author_email: string;
     date: number;
+    category: string;
   }
 }
