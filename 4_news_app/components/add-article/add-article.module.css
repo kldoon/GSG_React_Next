@@ -106,3 +106,10 @@
   transform: translateY(-2px);
 }
 
+
+.errors {
+  font-size: 14px;
+  color: firebrick;
+  list-style-type: disc;
+  padding-left: 20px;
+}

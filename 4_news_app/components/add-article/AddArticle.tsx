@@ -1,16 +1,21 @@
-import React from 'react';
+'use client';
+
+import React, { useActionState } from 'react';
 import classes from './add-article.module.css';
 import { addArticle } from '@/controllers/news-actions';
 import SubmitArticle from './SubmitArticle';
 
 const AddArticleForm = () => {
+
+  const [state, formAction] = useActionState(addArticle, { errors: [] });
+
   return (
-    <form className={classes.newsForm} action={addArticle}>
+    <form className={classes.newsForm} action={formAction}>
       <div className={classes.formGroup}>
         <label htmlFor="a-title" className={classes.formLabel}>
           News Title
         </label>
-        <input id="a-title" type="text" maxLength={300} name="title" className={classes.formInput} />
+        <input id="a-title" maxLength={300} type="text" name="title" className={classes.formInput} />
       </div>
       <div className={classes.formGroup}>
         <label htmlFor="a-image" className={classes.formLabel}>
@@ -22,7 +27,7 @@ const AddArticleForm = () => {
         <label htmlFor="a-summary" className={classes.formLabel}>
           News Summary
         </label>
-        <input id="a-summary" type="text" name="summary" className={classes.formInput} />
+        <input id="a-summary" type="text" name="summary" className={classes.formInput} required />
       </div>
       <div className={classes.formGroup}>
         <label htmlFor="a-content" className={classes.formLabel}>
@@ -54,6 +59,9 @@ const AddArticleForm = () => {
         <input type="hidden" name="author" value="Sarah Miller" />
         <input type="hidden" name="author_email" value="sarahmiller@example.com" />
       </div>
+      <ul className={classes.errors}>
+        {state.errors.map(err => <li key={err}>{err}</li>)}
+      </ul>
       <div className={classes.formGroup}>
         <SubmitArticle />
       </div>

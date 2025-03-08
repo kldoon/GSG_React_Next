@@ -1,11 +1,12 @@
 'use server';
 
+import { ALLOWED_CATEGORIES } from "@/constants/data";
 import { insertArticle } from "@/services/news.service";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
 import xss from "xss";
 
-const addArticle = async (formData: FormData) => {
+const addArticle = async (prevState: { errors: string[] }, formData: FormData) => {
   const title = xss(formData.get('title')?.toString() || '');
 
   const newArticle: News.Item_ = {
@@ -20,7 +21,31 @@ const addArticle = async (formData: FormData) => {
     slug: slugify(title, { lower: true })
   };
 
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  const errors: string[] = [];
+
+  if (!newArticle.title.length) {
+    errors.push("The title should not be empty");
+  }
+
+  if (newArticle.title.length > 300) {
+    errors.push("The title should be less than 300 chars length");
+  }
+
+  if (!ALLOWED_CATEGORIES.includes(newArticle.category)) {
+    errors.push("The category you've provided is not allowed!");
+  }
+
+  if (newArticle.date > Date.now()) {
+    errors.push("The date should not be in the future!");
+  }
+
+  if (errors.length) {
+    return {
+      errors
+    }
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   insertArticle(newArticle);
   redirect(`/news/${newArticle.slug}`);
 }

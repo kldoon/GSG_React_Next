@@ -36,4 +36,14 @@ const CATEGORIES: News.ICategory[] = [
   }
 ];
 
-export { CATEGORIES };
+const ALLOWED_CATEGORIES = [
+  'global',
+  'palestine',
+  'gaza',
+  'finance',
+  'westbank',
+  'weather',
+  'sports',
+]
+
+export { CATEGORIES, ALLOWED_CATEGORIES };
