@@ -20,6 +20,7 @@ const addArticle = async (formData: FormData) => {
     slug: slugify(title, { lower: true })
   };
 
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   insertArticle(newArticle);
   redirect(`/news/${newArticle.slug}`);
 }
