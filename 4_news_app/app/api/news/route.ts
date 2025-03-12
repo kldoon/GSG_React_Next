@@ -18,7 +18,8 @@ const GET = async (request: NextRequest) => {
 }
 
 const POST = async (request: NextRequest) => {
-  console.log(await request.json())
+  const body = await request.json();
+  console.log(body);
   return NextResponse.json({
     msg: "Item Added"
   }, {
