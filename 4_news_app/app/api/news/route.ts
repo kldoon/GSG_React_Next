@@ -11,14 +11,24 @@ const GET = async (request: NextRequest) => {
   }
 
   const news = getNewsByCategory(category);
-  return NextResponse.json({ results: news }, { status: 200 });
+  return NextResponse.json(
+    { results: news },
+    { status: 200 }
+  );
 }
 
 const POST = async (request: NextRequest) => {
   console.log(await request.json())
   return NextResponse.json({
     msg: "Item Added"
-  }, { status: 201 });
+  }, {
+    status: 201,
+    // headers: {
+    //   'Access-Control-Allow-Origin': '*',
+    //   'Access-Control-Allow-Methods': 'GET',
+    //   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    // },
+  });
 }
 
 export {

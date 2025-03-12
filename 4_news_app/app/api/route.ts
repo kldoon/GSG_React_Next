@@ -14,6 +14,7 @@ export async function GET() {
 
 // Better convention
 // [GET] /api/news
+// [GET] /api/news/city-marathon-2025
 // [POST] /api/news
 // [PUT] /api/news
 // [DELETE] /api/news

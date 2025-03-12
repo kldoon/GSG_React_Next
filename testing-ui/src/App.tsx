@@ -7,9 +7,26 @@ function App() {
   const [newsList, setNewsList] = useState<any[]>([]);
 
   const fetchNews = () => {
-    fetch('http://www.yourwebsite.com/api/news?category=palestine')
+    fetch('http://127.0.0.1:3000/api/news?category=palestine')
       .then(res => res.json())
       .then(res => setNewsList(res.results));
+  }
+
+  const submitNews = () => {
+    fetch('http://127.0.0.1:3000/api/news?category=palestine', {
+      method: 'POST',
+      body: JSON.stringify({
+        "message": "hi from FE"
+      })
+    })
+      .then(res => res.json())
+      .then(res => setNewsList(res.results));
+  }
+
+  const loadArticle = (slug: string) => {
+    fetch(`http://127.0.0.1:3000/api/news/${slug}123`)
+      .then(res => res.json())
+      .then(res => console.log(res));
   }
 
   return (
@@ -19,10 +36,13 @@ function App() {
         <button onClick={fetchNews}>
           Fetch News
         </button>
+        <button onClick={submitNews}>
+          Submit News
+        </button>
         <hr />
         <ul>
           {
-            newsList.map(item => <li key={item.id}>{item.title}</li>)
+            newsList.map(item => <li key={item.id} onClick={() => loadArticle(item.slug)}>{item.title}</li>)
           }
         </ul>
       </div>
