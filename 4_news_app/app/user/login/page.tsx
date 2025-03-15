@@ -6,6 +6,8 @@ import { Lock } from '@phosphor-icons/react/dist/ssr/Lock';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
+// import jwt from 'jsonwebtoken';
+import { verifyToken } from '@/utils/auth';
 
 const Page = () => {
 
@@ -25,10 +27,20 @@ const Page = () => {
     );
 
     if (res.status === 200 /*res.ok*/) {
-      const user = await res.json();
-      console.log(user);
+      const token = await res.text();
       // Store the user in Auth context (react context API)
       // and store the user in localStorage
+
+      localStorage.setItem('auth-token', token);
+
+      // we need to await for the verify token as it's a server actions which will be async
+      // This is a feature of next JS which allows you call a BE function directly from the FE
+      const user = await verifyToken(token);
+
+      // We have another option to just decode the token at FE, 
+      // in this you don't need any secret code to do the decode
+      // const user = jwt.decode(token);
+
       localStorage.setItem('auth-user', JSON.stringify(user));
       redirect('/');
     } else {

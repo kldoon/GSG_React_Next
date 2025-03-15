@@ -12,7 +12,7 @@ const Category = (props: IProps) => {
     <div className={classes.wrapper}>
       <Link href={`/news-list/${props.data.title}`}>
         <div className={classes.banner}>
-          <Image src={props.data.imageURL} alt="Cat Image" fill />
+          <Image src={props.data.imageURL} alt="Cat Image" fill sizes="(max-width: 1200px) 100vw" />
         </div>
         <h2 className={classes.title}>{props.data.title}</h2>
         <h3 className={classes.latest}>{props.data.subtitle}</h3>
