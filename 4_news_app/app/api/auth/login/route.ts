@@ -1,13 +1,26 @@
-import { login } from "@/services/auth";
+import { findUserByEmail } from "@/services/auth";
+import { comparePassword } from "@/utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 const POST = async (request: NextRequest) => {
-  const body = await request.json() as { email: string, password: string };
-  const user = login(body.email, body.password);
-  if (!user) {
-    return new NextResponse('User not found!', { status: 401 });
+  const { email, password } = await request.json() as { email: string, password: string };
+
+  if (!email || !password) {
+    return new NextResponse('Email and Password are required', { status: 400 })
   }
 
+  const user = findUserByEmail(email);
+  if (!user) {
+    return new NextResponse('Invalid Credentials!', { status: 401 });
+  }
+
+  const isValidPassword = comparePassword(password, user.password || '');
+
+  if (!isValidPassword) {
+    return new NextResponse('Invalid Credentials!', { status: 401 });
+  }
+
+  delete user.password;
   return NextResponse.json(user, { status: 200 });
 }
 

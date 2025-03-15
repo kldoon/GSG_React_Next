@@ -37,4 +37,11 @@ declare namespace News {
     date: number;
     category: string;
   }
+
+  export interface IUser {
+    email: string;
+    password?: string;
+    role: string;
+    displayName: string;
+  }
 }

@@ -1,0 +1,203 @@
+.loginContainer {
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.loginTitle {
+  color: #71b2ab;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #a3d0ca;
+  padding-bottom: 0.5rem;
+}
+
+.loginDescription {
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  font-weight: 500;
+  color: #333333;
+  font-size: 0.95rem;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  color: #71b2ab;
+}
+
+.formInput {
+  padding: 0.75rem;
+  padding-left: 2.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #71b2ab;
+  box-shadow: 0 0 0 2px rgba(113, 178, 171, 0.2);
+  transform: translateY(-2px);
+}
+
+.labelWithLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgotPassword {
+  font-size: 0.85rem;
+  color: #71b2ab;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgotPassword:hover {
+  color: #5a8f89;
+  text-decoration: underline;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox:checked {
+  background-color: #71b2ab;
+  border-color: #71b2ab;
+}
+
+.checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(113, 178, 171, 0.2);
+}
+
+.checkboxLabel {
+  font-size: 0.9rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.loginButton {
+  background-color: #71b2ab;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.loginButton:hover {
+  background-color: #5a8f89;
+}
+
+.loginButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(113, 178, 171, 0.3);
+}
+
+.signupPrompt {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.signupLink {
+  color: #71b2ab;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.signupLink:hover {
+  color: #5a8f89;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .loginTitle {
+    font-size: 1.75rem;
+  }
+}
+
+/* Animation for the form */
+.loginContainer {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
