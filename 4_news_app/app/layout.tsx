@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/header/Header";
 import { Roboto, Mulish } from 'next/font/google';
 import classNames from "classnames";
 import { ToastContainer } from "react-toastify";
@@ -30,8 +29,6 @@ export const metadata: Metadata = {
 
 interface IProps {
   children: React.ReactNode;
-  latestgb: React.ReactNode;
-  latestus: React.ReactNode;
 }
 
 export default function RootLayout({ children }: IProps) {
@@ -40,7 +37,6 @@ export default function RootLayout({ children }: IProps) {
     <html lang="en" className={classNames(mulishFont.variable, robotoFont.variable)}>
       <body>
         <ToastContainer />
-        <Header />
         {children}
       </body>
     </html>
