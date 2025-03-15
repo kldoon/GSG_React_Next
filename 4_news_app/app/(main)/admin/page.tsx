@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 
 const Page = () => {
   const user = JSON.parse(localStorage.getItem('auth-user') || '{}');
-  if (!user || user.role !== 'admin') {
+  const token = localStorage.getItem('auth-token');
+  if (!token || !user || user.role !== 'admin') {
     toast.warn("You don't have the permission to access this page!");
     redirect('/user/login');
   }
