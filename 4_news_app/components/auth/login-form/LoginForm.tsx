@@ -8,8 +8,6 @@ import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { User } from '@phosphor-icons/react/dist/icons/User';
 import { Lock } from '@phosphor-icons/react/dist/icons/Lock';
-// import jwt from 'jsonwebtoken';
-
 
 const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

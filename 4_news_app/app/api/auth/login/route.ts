@@ -1,5 +1,6 @@
 import { findUserByEmail } from "@/services/auth";
 import { comparePassword, generateToken } from "@/utils/auth";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 const POST = async (request: NextRequest) => {
@@ -21,9 +22,27 @@ const POST = async (request: NextRequest) => {
   }
 
   delete user.password;
-  const token = generateToken(user);
+  const token = await generateToken(user);
+
+  (await cookies()).set('auth-token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 3600  // 1 hour
+  });
 
   return new NextResponse(token, { status: 200 });
 }
 
 export { POST };
+
+// If you want to make logout api
+/*
+
+ (await cookies()).set('auth-token', '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 0  // Expire Immediately
+  });
+
+
+*/

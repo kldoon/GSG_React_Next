@@ -1,7 +1,7 @@
 'use server';
 
 import { compareSync, hashSync } from "bcryptjs";
-import jwt from 'jsonwebtoken';
+import * as jose from 'jose';
 const JWT_SECRET = process.env.JWT_SECRET || '';
 
 const comparePassword = (password: string, hashedPassword: string): boolean => {
@@ -12,23 +12,19 @@ const hashPassword = (password: string): string => {
   return hashSync(password);
 }
 
-const generateToken = (user: News.IUser): string => {
-  console.log(JWT_SECRET);
-
-  const token = jwt.sign(
-    { email: user.email, role: user.role, displayName: user.displayName },
-    JWT_SECRET,
-    { expiresIn: '1w' }
-  );
+const generateToken = async (user: News.IUser) => {
+  const token = await new jose.SignJWT({ email: user.email, role: user.role, displayName: user.displayName })
+    .setExpirationTime('1w')
+    .setProtectedHeader({ alg: 'HS256' })
+    .sign(new TextEncoder().encode(JWT_SECRET));
 
   return token;
 }
 
 const verifyToken = async (token: string): Promise<News.IUser | null> => {
   try {
-    const user = jwt.verify(token, JWT_SECRET);
-
-    return user as News.IUser;
+    const { payload } = await jose.jwtVerify(token, new TextEncoder().encode(JWT_SECRET));
+    return payload as unknown as News.IUser;
   } catch (err) {
     console.log(err);
     return null;
