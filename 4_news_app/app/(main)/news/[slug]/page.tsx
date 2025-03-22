@@ -2,9 +2,20 @@ import { getNewsArticle } from '@/services/news.service';
 import Image from 'next/image';
 import React from 'react';
 import classes from './article.module.css';
+import { Metadata } from 'next';
 
 interface IProps {
   params: Promise<{ slug: string }>
+}
+
+export const generateMetadata = async (props: IProps): Promise<Metadata> => {
+  const { slug } = await props.params;
+  const article = getNewsArticle(slug);
+
+  return {
+    title: `${article.title}`,
+    authors: { name: article.author }
+  }
 }
 
 const NewArticle = async (props: IProps) => {

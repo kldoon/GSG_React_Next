@@ -1,9 +1,19 @@
 import React, { Suspense } from 'react';
 import classes from './news-list.module.css';
 import NewsList from './news-list';
+import { Metadata } from 'next';
 
 interface IProps {
   params: Promise<{ slug: string[] }>
+}
+
+export const generateMetadata = async (props: IProps): Promise<Metadata> => {
+  const { slug } = await props.params;
+  const [category] = slug;
+
+  return {
+    title: `${category.toUpperCase()} News`
+  }
 }
 
 const NewsListPage = async (props: IProps) => {

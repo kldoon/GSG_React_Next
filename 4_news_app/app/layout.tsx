@@ -23,8 +23,11 @@ const mulishFont = Mulish({
 });
 
 export const metadata: Metadata = {
-  title: "GSG News",
-  description: "GSG News, get latest news around the world"
+  title: {
+    template: '%s | GSG News!',
+    default: ''
+  },
+  description: 'GSG News, get latest news around the world'
 };
 
 interface IProps {
