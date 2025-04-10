@@ -19,9 +19,9 @@ const AddArticleForm = () => {
       </div>
       <div className={classes.formGroup}>
         <label htmlFor="a-image" className={classes.formLabel}>
-          News Image URL
+          News Image
         </label>
-        <input id="a-image" type="text" name="image" className={classes.formInput} />
+        <input id="a-image" type="file" name="image" accept="image/*" className={classes.formInput} />
       </div>
       <div className={classes.formGroup}>
         <label htmlFor="a-summary" className={classes.formLabel}>

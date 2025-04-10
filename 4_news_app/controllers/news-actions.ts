@@ -5,13 +5,14 @@ import { insertArticle } from "@/services/news.service";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
 import xss from "xss";
+import fs from 'node:fs';
 
 const addArticle = async (prevState: { errors: string[] }, formData: FormData) => {
   const title = xss(formData.get('title')?.toString() || '');
 
   const newArticle: News.Item_ = {
     title,
-    image: formData.get('image')?.toString() || '',
+    image: '',
     summary: xss(formData.get('summary')?.toString() || ''),
     content: xss(formData.get('content')?.toString() || ''),
     date: new Date(formData.get('date')?.toString() || '').getTime(),
@@ -20,6 +21,19 @@ const addArticle = async (prevState: { errors: string[] }, formData: FormData) =
     category: formData.get('category')?.toString() || 'global',
     slug: slugify(title, { lower: true })
   };
+
+  const imgFile = formData.get('image') as File;
+  const fileExtension = imgFile.name.split('.').pop();
+  const fileName = `${newArticle.slug}.${fileExtension}`;
+  const stream = fs.createWriteStream(`public/images/${fileName}`);
+  const bufferedImage = await imgFile.arrayBuffer()
+  stream.write(Buffer.from(bufferedImage), (error) => {
+    if (error) {
+      throw new Error('Error uploading Image!');
+    }
+  });
+
+  newArticle.image = `/images/${fileName}`;
 
   const errors: string[] = [];
 
